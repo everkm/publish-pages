@@ -1,0 +1,172 @@
+kind: pipeline
+name: publish-www
+type: docker
+
+clone:
+  depth: 1
+  # disable: true
+
+trigger:
+  ref:
+    # - refs/heads/feature-*
+    - refs/tags/publish-www@v*
+
+steps:
+  - name: build
+    image: dev.liveio.cn:5000/base/node:14-ts-pnpm
+    volumes:
+      - name: publish-www_node_module
+        path: /drone/src/packages/publish-www/node_modules
+    environment:
+      GFW_PROXY:
+        from_secret: gfw_proxy
+    commands:
+      - export https_proxy=http://$${GFW_PROXY} http_proxy=http://$${GFW_PROXY} all_proxy=socks5://$${GFW_PROXY}
+      - export NO_PROXY="localhost,127.0.0.1"
+      - cd packages/publish-www
+      - pnpm config set store-dir /root/.pnpm
+      # - pnpm config set registry https://registry.npm.taobao.org/
+      - pnpm install
+      - make dist
+      - export ASSETS_ARTIFACT="${DRONE_TAG##publish-www@v}"
+      - tar zcvf publish-www_v$${ASSETS_ARTIFACT}.tar.gz dist/
+      - ls -Rlh dist
+    when:
+      event:
+        exclude:
+          - promote
+
+  - name: gitea_release
+    image: plugins/gitea-release
+    settings:
+      api_key:
+        from_secret: gitea_access_token
+      base_url: http://dev.liveio.cn:8700
+      insecure: true
+      draft: true
+      checksum: sha256
+      files:
+        - /drone/src/packages/publish-www/*.tar.gz
+    when:
+      event:
+        exclude:
+          - promote
+
+  - name: deploy to dev
+    image: drillster/drone-rsync
+    settings:
+      hosts: ["dev.liveio.cn"]
+      port: 22
+      source: ./packages/publish-www/dist/
+      target: /data/www/publish-www
+      exclude: [".*", "*.tar.gz"]
+      delete: false
+      recursive: true
+      key:
+        from_secret: deploy_key
+    when:
+      event:
+        exclude:
+          - promote
+
+  - name: CND
+    image: dev.liveio.cn:5000/daobox/dl:latest
+    pull: always
+    environment:
+      QINIU_AK:
+        from_secret: qiniu_access_key
+      QINIU_SK:
+        from_secret: qiniu_secret_key
+      GIT_USER:
+        from_secret: gitea_user
+      GIT_PASSWORD:
+        from_secret: gitea_password
+      GIT_AK:
+        from_secret: gitea_access_token
+    commands:
+      - cd packages/publish-www
+      - |
+        /app/qshell account $${QINIU_AK} $${QINIU_SK} daobox -w
+        /app/qshell qupload2 \
+            --src-dir=./dist/assets \
+            --key-prefix=publish-www/assets/ \
+            --bucket=dayu-assets \
+            --thread-count 5 \
+            --overwrite \
+            --check-hash  \
+            --rescan-local=true \
+            --skip-fixed-strings=.DS_Store
+    when:
+      event:
+        exclude:
+          - promote
+  
+  - name: fetch artifact
+    image: dev.liveio.cn:5000/daobox/dl:latest
+    pull: always
+    environment:
+      QINIU_AK:
+        from_secret: qiniu_access_key
+      QINIU_SK:
+        from_secret: qiniu_secret_key
+      GIT_USER:
+        from_secret: gitea_user
+      GIT_PASSWORD:
+        from_secret: gitea_password
+      GIT_AK:
+        from_secret: gitea_access_token
+    commands:
+      - cd packages/publish-www
+      - mkdir dist && cd dist
+      - export DOWNLOAD_PREFIX=$(echo $$DRONE_REPO_LINK)
+      - echo $${DOWNLOAD_PREFIX}
+      - export ASSETS_ARTIFACT="${DRONE_TAG##publish-www@v}"
+      - echo "$${DOWNLOAD_PREFIX}/releases/download/${DRONE_TAG}/publish-www_v$${ASSETS_ARTIFACT}.tar.gz"
+      - curl -L -s -v --user $${GIT_USER}:$${GIT_PASSWORD} -o "static.tar.gz" "$${DOWNLOAD_PREFIX}/releases/download/${DRONE_TAG}/publish-www_v$${ASSETS_ARTIFACT}.tar.gz"
+      - tar zxvf static.tar.gz && rm -f zxvf static.tar.gz
+    when:
+      event: [promote]
+
+  - name: deploy production
+    image: drillster/drone-rsync
+    settings:
+      hosts: ["${DRONE_DEPLOY_TO}.liveio.cn"]
+      port: 11022
+      source: ./packages/publish-www/dist/
+      target: /data/www/publish-www/
+      exclude: [".*", "*.tar.gz"]
+      delete: false
+      recursive: true
+      key:
+        from_secret: deploy_key
+    when:
+      event: [promote]
+
+  - name: notify
+    image: fifsky/drone-wechat-work
+    settings:
+      url:
+        from_secret: wework_hook
+      msgtype: markdown
+      content: |
+        {{if eq .Status "success" }}
+        #### 🎉 ${DRONE_REPO} 构建成功
+        > Commit: [${DRONE_COMMIT_MESSAGE}](${DRONE_COMMIT_LINK})
+        > Author: ${DRONE_COMMIT_AUTHOR}
+        > [点击查看](${DRONE_BUILD_LINK})
+        {{else}}
+        #### ❌ ${DRONE_REPO} 构建失败
+        > Commit: [${DRONE_COMMIT_MESSAGE}](${DRONE_COMMIT_LINK})
+        > Author: ${DRONE_COMMIT_AUTHOR}
+        > 请立即修复!!!
+        > [点击查看](${DRONE_BUILD_LINK})
+        {{end}}
+    when:
+      status:
+        - failure
+        - success
+
+volumes:
+  - name: publish-www_node_module
+    host:
+      path: /data/var/publish-www_node_module

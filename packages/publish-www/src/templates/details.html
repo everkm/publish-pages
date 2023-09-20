@@ -1,0 +1,18 @@
+{% extends "_daobox/layout.html" %}
+{% import "_daobox/blocks.html" as blocks %}
+
+
+{% block body %}
+<div class="mx-auto max-w-screen-md mb-10 prose px-4 md:px-0 pt-3">
+  {% set doc = post_detail(id=__qs | get(key="id", default=""), path=__qs | get(key="path", default="")) %}
+
+  <h1>{{doc.title}}</h1>
+  <p>
+    时间：<span>{{doc.date | date(format="%Y-%m-%d %H:%M:%S")}}</span><br/>
+    目录：<span>{{doc.dir}}</span><br/>
+  </p>
+  <div class="">
+    {{doc.content_html | safe}}
+  </div>
+</div>
+{% endblock body %}

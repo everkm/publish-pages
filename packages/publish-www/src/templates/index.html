@@ -1,0 +1,15 @@
+{% extends "_daobox/layout.html" %}
+{% import "_daobox/common_blocks.html" as common_blocks %}
+{% import "_daobox/widgets/drawer_aside.html" as drawer_blocks %}
+{% import "_daobox/widgets/article_toc.html" as article_toc_blocks %}
+
+{% block body %}
+<div class="mx-auto mb-10 px-6 lg:px-0 prose pt-4">
+  {% set doc = post_detail(path="/_page/home.md") %}
+
+  <h1 class="text-center">{{doc.title}}</h1>
+
+  {{doc.content_html | safe}}
+
+</div>
+{% endblock body %}

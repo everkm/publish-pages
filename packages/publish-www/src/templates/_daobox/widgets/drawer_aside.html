@@ -1,0 +1,32 @@
+{% macro drawer_aside(body) %}
+<div class="drawer-mask hidden fixed bg-black opacity-20 inset-x-0 inset-y-0"></div>
+<div class="drawer-body basis-1/4 max-w-xs min-w-[10rem] top-[var(--app-header-height)] 
+     flex-shrink flex-grow border-r
+     sticky
+    overflow-auto md:flex hidden"
+    style="height: calc(100vh - var(--app-header-height));">
+    <div id="book-aside" class="h-full relative w-full text-base">
+        <div id="book-nav" class="flex flex-col h-full">
+            <!-- <div class="flex items-center px-4 w-full mb-2 relative"> -->
+            <!-- </div> -->
+            <div class="nav-tree invisible flex-1 overflow-auto overscroll-contain px-4 py-2">
+                {{body|safe}}
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- <div
+    class="btn-clean-filter absolute top-0 left-0 w-6 h-6 p-2 active:bg-gray-200 active:fill-gray-600 rounded-full fill-gray-400">
+    {% include "_daobox/icons/close.svg" %}
+  </div> -->
+{% endmacro drawer_aside %}
+
+
+{% macro icon_button(id="drawer") %}
+<div id="{{id}}" class="flex-shrink-0 ml-4 overflow-hidden md:hidden text-gray-500">
+    <div class="w-6 h-6 flex items-center justify-center active:bg-gray-200">
+        {% include "_daobox/icons/icon2_drawer.svg" %}
+    </div>
+</div>
+{% endmacro icon_button %}

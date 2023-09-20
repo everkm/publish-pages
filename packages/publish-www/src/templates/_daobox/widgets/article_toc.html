@@ -1,0 +1,20 @@
+{% macro inner_holder() %}
+<div class="toc-intersection"></div>
+<div
+    class="inner-toc sticky top-[var(--app-header-height)] z-[5] px-4 mb-2 border rounded-sm hidden lg:hidden bg-white">
+    <div class=" py-1.5 cursor-pointer flex items-center ">
+        本页目录
+        <div class="icon inline-block w-3 h-3 ml-1.5 fill-black/40 rotate-180">
+            {% include "_daobox/icons/up_triangle.svg" %}
+        </div>
+    </div>
+    <div class="toc-content select-none"></div>
+</div>
+{% endmacro inner_holder %}
+
+
+{% macro mount_holder(id="js-toc") %}
+<div class="fixed top-[calc(var(--app-header-height)+1rem)]  bottom-4  overflow-auto pr-4 w-80 ">
+    <div id="{{id}}" class="toc-content"></div>
+</div>
+{% endmacro mount_holder %}

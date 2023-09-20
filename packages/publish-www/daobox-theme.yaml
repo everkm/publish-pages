@@ -1,0 +1,27 @@
+name: daobox-site
+author: dayu<dayu@dayu.me>
+repository: https://github.com/daobox-site-theme/yilog
+demo: https://yilog.theme.daobox.cc/
+
+context:
+  - location:
+      - /docs/
+    qs:
+      __tpl: /book.html
+      nav: /docs/_nav.md
+      ajax: /docs/
+  - location:
+      - /docs/index.html
+    qs:
+      path: /docs/基础介绍.md
+  - location:
+      - /guwenguanzhi/
+    qs:
+      __tpl: /book.html
+      nav: /demo/古文观止/_nav.md
+      ajax: /guwenguanzhi/
+  - location:
+      - /guwenguanzhi/index.html
+    qs:
+      path: /demo/古文观止/师说.md
+      

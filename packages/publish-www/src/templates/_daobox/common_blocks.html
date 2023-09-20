@@ -1,0 +1,25 @@
+{% import "_daobox/widgets/drawer_aside.html" as drawer_blocks %}
+
+{% macro app_header(with_menu=false) %}
+<div class="flex justify-between items-center px-4 py-3 md:px-8">
+    <div class="flex items-center">
+        <a href="{{base_url()}}/index.html">
+            <img src="@/assets/img/logo-m@2x.png" class="inline-block mr-2 w-8 h-8 font-medium" alt="道盒" />
+        </a>
+
+        <div>
+            <span class="text-lg font-medium">道盒发布</span>
+            <span class="hidden lg:inline-block  text-gray-600 text-xs">我的风格我做主</span>
+        </div>
+    </div>
+    <div class="hidden md:flex space-x-2">
+        <!-- <a href2="{{base_url()}}/download.html" class="link inline-block">下载</a> -->
+        <a href="{{base_url()}}/docs/" class="link inline-block">文档</a>
+    </div>
+
+    {% if with_menu %}
+    {{drawer_blocks::icon_button()}}
+    {% endif %}
+    
+</div>
+{% endmacro app_header %}

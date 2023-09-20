@@ -1,0 +1,39 @@
+{% extends "_daobox/layout.html" %}
+{% import "_daobox/blocks.html" as blocks %}
+
+{% block css %}
+{{ assets(section="download", type="css") }}
+{% endblock css %}
+
+{% block js %}{{ assets(section="download", type="js") }}{% endblock js %}
+
+
+{% block body %}
+
+{% set nav_js = `
+[
+  {
+    "name": "首页",
+    "link": "."
+  },
+  {
+    "name": "下载中心",
+    "link": ""
+  }
+]
+` %}
+{{ blocks::breadcrumb(navs = script(nav_js)) }}
+
+
+
+<div class="flex items-center justify-center space-x-6 text-lg">
+  <a href="#stable" class="versions-tab-header !no-underline rounded-sm hover:bg-gray-100 cursor-pointer px-5 py-2">正式版</a>
+  <a href="#beta" class="versions-tab-header !no-underline rounded-sm hover:bg-gray-100 cursor-pointer px-5 py-2">公测版</a>
+  <a href="#alpha" class="versions-tab-header !no-underline rounded-sm hover:bg-gray-100 cursor-pointer px-5 py-2">内测版</a>
+</div>
+{% set prefix = "https://assets.daobox.cc/daobox-site/" %}
+{{blocks::download_channel(prefix=prefix, channel="stable")}}
+{{blocks::download_channel(prefix=prefix, channel="beta")}}
+{{blocks::download_channel(prefix=prefix, channel="alpha")}}
+    
+{% endblock body %}
