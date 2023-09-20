@@ -30,7 +30,7 @@ steps:
       - pnpm install
       - make dist
       - export ASSETS_ARTIFACT="${DRONE_TAG##publish-www@v}"
-      - tar zcvf publish-www_v$${ASSETS_ARTIFACT}.tar.gz dist/
+      - tar zcvf publish-www_v$${ASSETS_ARTIFACT}.tar.gz -C dist/ .
       - ls -Rlh dist
     when:
       event:
