@@ -48,7 +48,7 @@ jobs:
     - name: dist
       run: |
         cd packages/publish-www && pnpm i && make dist
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa_daobox
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > id_rsa_daobox
         # mkdir $HOME/.ssh
         # echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa_daobox
         # chmod 600 $HOME/.ssh/id_rsa_daobox
