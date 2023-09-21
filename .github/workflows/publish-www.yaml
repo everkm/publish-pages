@@ -46,7 +46,7 @@ jobs:
           ${{ runner.os }}-pnpm-store-
 
     - name: dist
-      run: cd packages/publish-www && make dist
+      run: cd packages/publish-www && pnpm i && make dist
 
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.4
