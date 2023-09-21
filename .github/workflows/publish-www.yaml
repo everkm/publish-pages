@@ -71,7 +71,17 @@ jobs:
           echo "Running Script"
           cd /work/
           ls
-          rsync -e "ssh -o StrictHostKeyChecking=no -i /work/packages/publish-www/id_rsa_daobox -p 11022" -r packages/publish-www/dist/ root@y5.liveio.cn:/data/www/publish-www/
+          rsync -e "ssh -o StrictHostKeyChecking=no -i /work/packages/publish-www/id_rsa_daobox -p 11022" \
+            --recursive \
+            --verbose \
+            --checksum \
+            --delete \
+            --compress \
+            --links \
+            --delete-after \
+            --exclude=*.sh \
+            packages/publish-www/dist/ \
+            root@y5.liveio.cn:/data/www/publish-www/
 
     # - name: Deploy to Staging server
     #   uses: easingthemes/ssh-deploy@main
