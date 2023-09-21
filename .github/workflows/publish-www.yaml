@@ -47,31 +47,18 @@ jobs:
 
     - name: dist
       run: |
-        cd packages/publish-www && pnpm i && make dist
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > id_rsa_daobox
-      # mkdir $HOME/.ssh
-      # echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa_daobox
-      # chmod 600 $HOME/.ssh/id_rsa_daobox
-      # ssh-keygen -lf $HOME/.ssh/id_rsa_daobox
-      # which scp
-      # ssh -o StrictHostKeyChecking=no root@y5.liveio.cn -p 11022 -i $HOME/.ssh/id_rsa_daobox "cat /etc/issue"
-      # apt-get update && apt-get install -y rsync
-      # ssh-keyscan -p 11022 y5.liveio.cn > $HOME/.ssh/known_hosts
-      # eval $(ssh-agent)
-      # ssh-add ~/.ssh/id_rsa
-      # echo HostKeyAlgorithms         +ssh-rsa > $HOME/.ssh/config
-      # echo PubkeyAcceptedKeyTypes    +ssh-rsa >> $HOME/.ssh/config
-      # rsync -e "ssh -o StrictHostKeyChecking=no" -P 11022 -r cd packages/publish-www/dist/ root@y5.liveio.cn:/data/www/publish-www/
+        cd packages/publish-www && pnpm i && make dist
 
     - uses: addnab/docker-run-action@v3
       with:
         image: instrumentisto/rsync-ssh
         options: -v ${{ github.workspace }}:/work -e ABC=123
         run: |
-          echo "Running Script"
+          echo "Running rsync"
           cd /work/
           ls
-          rsync -e "ssh -o StrictHostKeyChecking=no -i /work/packages/publish-www/id_rsa_daobox -p 11022" \
+          rsync -e "ssh -o StrictHostKeyChecking=no -i /work/id_rsa_daobox -p 11022" \
             --recursive \
             --verbose \
             --checksum \
@@ -83,34 +70,7 @@ jobs:
             packages/publish-www/dist/ \
             root@y5.liveio.cn:/data/www/publish-www/
 
-    # - name: Deploy to Staging server
-    #   uses: easingthemes/ssh-deploy@main
-    #   with:
-    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-    #     ARGS: "-rlgoDzvc -i"
-    #     SOURCE: "packages/publish-www/dist/"
-    #     REMOTE_HOST: y5.liveio.cn
-    #     REMOTE_PORT: 11022
-    #     REMOTE_USER: root
-    #     TARGET: "/data/www/publish-www/"
-    #     EXCLUDE: "/dist/, /node_modules/"
-        # SCRIPT_BEFORE: |
-        #   whoami
-        #   ls -al
-        # SCRIPT_AFTER: |
-        #   whoami
-        #   ls -al
-        #   echo $RSYNC_STDOUT
 
-    # - name: Set up SSH
-    #   uses: webfactory/ssh-agent@v0.8.0
-    #   with:
-    #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-    # - name: Deploy using rsync
-    #   run: |
-    #     rsync -e "ssh -o StrictHostKeyChecking=no" -P 11022 -r cd packages/publish-www/dist/ root@y5.liveio.cn:/data/www/publish-www/
-      
     # - name: Create Release
     #   id: create_release
     #   uses: softprops/action-gh-release@v1
