@@ -48,12 +48,13 @@ jobs:
     - name: dist
       run: |
         cd packages/publish-www && pnpm i && make dist
-        mkdir $HOME/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa_daobox
-        chmod 600 $HOME/.ssh/id_rsa_daobox
-        ssh-keygen -lf $HOME/.ssh/id_rsa_daobox
-        which scp
-        ssh -o StrictHostKeyChecking=no root@y5.liveio.cn -p 11022 -i $HOME/.ssh/id_rsa_daobox "cat /etc/issue"
+        # mkdir $HOME/.ssh
+        # echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa_daobox
+        # chmod 600 $HOME/.ssh/id_rsa_daobox
+        # ssh-keygen -lf $HOME/.ssh/id_rsa_daobox
+        # which scp
+        # ssh -o StrictHostKeyChecking=no root@y5.liveio.cn -p 11022 -i $HOME/.ssh/id_rsa_daobox "cat /etc/issue"
       # apt-get update && apt-get install -y rsync
       # ssh-keyscan -p 11022 y5.liveio.cn > $HOME/.ssh/known_hosts
       # eval $(ssh-agent)
@@ -62,6 +63,14 @@ jobs:
       # echo PubkeyAcceptedKeyTypes    +ssh-rsa >> $HOME/.ssh/config
       # rsync -e "ssh -o StrictHostKeyChecking=no" -P 11022 -r cd packages/publish-www/dist/ root@y5.liveio.cn:/data/www/publish-www/
 
+    - uses: addnab/docker-run-action@v3
+      with:
+        image: instrumentisto/rsync-ssh
+        options: -v ${{ github.workspace }}:/work -e ABC=123
+        run: |
+          echo "Running Script"
+          cd /work/
+          ls
 
     - name: Deploy to Staging server
       uses: easingthemes/ssh-deploy@main
