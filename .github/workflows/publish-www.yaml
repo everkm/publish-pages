@@ -48,15 +48,34 @@ jobs:
     - name: dist
       run: cd packages/publish-www && pnpm i && make dist
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.8.0
 
+    - name: Deploy to Staging server
+      uses: easingthemes/ssh-deploy@main
       with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: "-rlgoDzvc -i"
+        SOURCE: "packages/publish-www/dist/"
+        REMOTE_HOST: y5.liveio.cn
+        REMOTE_PORT: 11022
+        REMOTE_USER: root
+        TARGET: "/data/www/publish-www/"
+        EXCLUDE: "/dist/, /node_modules/"
+        SCRIPT_BEFORE: |
+          whoami
+          ls -al
+        SCRIPT_AFTER: |
+          whoami
+          ls -al
+          echo $RSYNC_STDOUT
 
-    - name: Deploy using rsync
-      run: |
-        rsync -e "ssh -o StrictHostKeyChecking=no" -P 11022 -r cd packages/publish-www/dist/ root@y5.liveio.cn:/data/www/publish-www/
+    # - name: Set up SSH
+    #   uses: webfactory/ssh-agent@v0.8.0
+    #   with:
+    #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    # - name: Deploy using rsync
+    #   run: |
+    #     rsync -e "ssh -o StrictHostKeyChecking=no" -P 11022 -r cd packages/publish-www/dist/ root@y5.liveio.cn:/data/www/publish-www/
       
     # - name: Create Release
     #   id: create_release
