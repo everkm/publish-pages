@@ -49,12 +49,12 @@ jobs:
       run: |
         cd packages/publish-www && pnpm i && make dist
         mkdir $HOME/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa
-        ssh-keygen -lf $HOME/.ssh/id_rsa
-        ssh -T root@y5.liveio.cn -p 11022 -i $HOME/.ssh/id_rsa
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa_daobox
+        chmod 600 $HOME/.ssh/id_rsa_daobox
+        ssh-keygen -lf $HOME/.ssh/id_rsa_daobox
+        ssh -T root@y5.liveio.cn -p 11022 -i $HOME/.ssh/id_rsa_daobox
       # apt-get update && apt-get install -y rsync
       # ssh-keyscan -p 11022 y5.liveio.cn > $HOME/.ssh/known_hosts
-      # chmod 600 $HOME/.ssh/id_rsa
       # eval $(ssh-agent)
       # ssh-add ~/.ssh/id_rsa
       # echo HostKeyAlgorithms         +ssh-rsa > $HOME/.ssh/config
