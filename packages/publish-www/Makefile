@@ -2,7 +2,7 @@
 tag:
 	@if [ "$(TAG)" != "" ]; then \
 		git tag -f $(TAG); \
-		git push -f liveio $(TAG); \
+		git push -f github $(TAG); \
 	fi
 
 
