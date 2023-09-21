@@ -36,7 +36,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
-    "daobox-publish": "^0.6.1",
+    "daobox-publish": "^0.6.3",
     "dotenv": "^16.3.1",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.48.0",
