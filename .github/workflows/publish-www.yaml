@@ -1,0 +1,70 @@
+name: Theme Release
+
+
+
+on:
+  push:
+    tags:
+      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - uses: pnpm/action-setup@v2
+      name: Install pnpm
+      with:
+        version: 8
+        run_install: false
+
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - uses: actions/cache@v3
+      name: Setup pnpm cache
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: dist
+      run: cd packages/publish-www && make dist
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy using rsync
+      run: |
+        rsync -e "ssh -o StrictHostKeyChecking=no" -P 11022 -r cd packages/publish-www/dist/ root@y5.liveio.cn:/data/www/publish-www/
+      
+    # - name: Create Release
+    #   id: create_release
+    #   uses: softprops/action-gh-release@v1
+    #   with:
+    #     body: TODO New Release.
+    #     draft: true
+    #     prerelease: true
+    #     files: |
+    #       yilog.zip
