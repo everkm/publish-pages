@@ -48,11 +48,13 @@ jobs:
     - name: dist
       run: |
         cd packages/publish-www && pnpm i && make dist
-        apt update && apt install -y rsync
+        apt-get update && apt-get install -y rsync
         mkdir $HOME/.ssh
         ssh-keyscan -p 11022 y5.liveio.cn > $HOME/.ssh/known_hosts
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa
         chmod 600 $HOME/.ssh/id_rsa
+        eval $(ssh-agent)
+        ssh-add ~/.ssh/id_rsa
         echo HostKeyAlgorithms         +ssh-rsa > $HOME/.ssh/config
         echo PubkeyAcceptedKeyTypes    +ssh-rsa >> $HOME/.ssh/config
         rsync -e "ssh -o StrictHostKeyChecking=no" -P 11022 -r cd packages/publish-www/dist/ root@y5.liveio.cn:/data/www/publish-www/
