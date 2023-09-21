@@ -1,3 +1,3 @@
-# 道盒博客
+# 道盒发布
 
-[道盒博客官网](https://site.daobox.cn)
+[道盒发布官网](https://publish.daobox.cn)
