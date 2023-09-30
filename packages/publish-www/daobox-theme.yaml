@@ -1,6 +1,6 @@
-name: daobox-site
+name: daobox-publish
 author: dayu<dayu@dayu.me>
-repository: https://github.com/daobox-site-theme/yilog
+repository: https://github.com/daobox-theme/yilog
 demo: https://yilog.theme.daobox.cc/
 
 context:
