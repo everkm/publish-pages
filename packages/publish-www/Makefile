@@ -9,14 +9,16 @@ tag:
 # @VITE_RELEASE=prod ~/.cargo/bin/daobox-publish serve \
 
 serve:
-	@VITE_RELEASE=prod RUST_BACKTRACE=1 DAOBOX_LOG=info \
+	@VITE_RELEASE=prod RUST_BACKTRACE=0 DAOBOX_LOG=info \
 		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
+		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
 		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
 
 export-all:
 	@DAOBOX_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
+		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
 		./node_modules/.bin/daobox-publish serve \
 		--dev-dir ./ \
 		--export

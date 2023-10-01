@@ -1,3 +1,7 @@
 cfg:
   daobox_site_assets: https://assets.daobox.cc/daobox-assets/0.0.1
   # daobox_site_assets: http://localhost:9082/daobox-assets/0.0.1
+
+uri:
+  - dir: /docs/
+    path: /docs/{{slug}}.html
