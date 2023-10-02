@@ -98,3 +98,7 @@ h6:hover .heading-anchor,
 h7:hover .heading-anchor{
   visibility: visible;
 }
+
+td:nth-of-type(-n+4) {
+    white-space: nowrap;
+}
