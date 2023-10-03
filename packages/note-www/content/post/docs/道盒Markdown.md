@@ -15,9 +15,11 @@ slug: daobox-markdown
 
 # 一、Markdown标准语法
 
+来自：<https://daringfireball.net/projects/markdown/syntax>
+
 ## 标题
 
-```md
+```markdown
 # 一级标题
 ## 二级标题
 ### 三级标题
@@ -28,7 +30,7 @@ slug: daobox-markdown
 
 ## 段落
 
-段落之间由两次回车换行完成。一次回车换行仅用于分割文字，在最终表现上没有效果。两次换行会形成段落。  
+段落之间由两次回车换行完成。一次回车换行仅用于分割文字，在前端表现上没有任何效果。连续两次换行会形成段落。  
 一次换行之前敲入两个空格，前端的表现为段落内换行，也称作软换行。实际效果见本行。
 
 ## 列表
@@ -37,7 +39,7 @@ slug: daobox-markdown
 有序列表使用数字序号或 `1. ` 实现，后面也有一个空格，前端会自动重新依次编号。   
 多级列表缩进在每级之前分别多加两个或四个空格。
 
-```md
+```markdown
 * 无序列表1
 * 无序列表2
 * 无序列表3
@@ -64,7 +66,7 @@ slug: daobox-markdown
 
 ## 强调
 
-```md
+```markdown
 强调，又叫做斜体，使用 *星号* 或 _下划线_。
 
 重点强调，又叫做粗体，使用 **星号** 或 __下划线__。
@@ -77,7 +79,7 @@ slug: daobox-markdown
 
 ## 链接
 
-```md
+```markdown
 [内嵌式链接](https://note.daobox.cn)
 
 [带标题的内嵌式链接](https://note.daobox.cn "道盒笔记")
@@ -95,7 +97,7 @@ slug: daobox-markdown
 
 ## 图片
 
-```md
+```markdown
 1. 内嵌式
 ![alt text](https://example.com/logo.png "Picture Title")
 
@@ -149,6 +151,8 @@ console.log('代码块+语法高亮')
 
 # 二、Github Markdown扩展语法
 
+来自：<https://github.github.com/gfm/>
+
 ## 删除线
 
 ```markdown
@@ -174,7 +178,7 @@ console.log('代码块+语法高亮')
 有时包含一个读者可见的非超链接注脚很有用。
 使用 `[^数字|字母中线下划线组合]` 方式实现，字符后面可以用数字标号，或字母与下划线、中线的组合，渲染时系统自动重新依次编号。
 
-```md
+```markdown
 Text prior to footnote reference.[^2]
 [^2]: Comment to include in footnote.
 ```
@@ -202,7 +206,7 @@ Markdown | Less | Pretty
 
 ## 定义列表 （Definition Lists）
 
-<pre>
+```markdown
 Apple
 
 :   Pomaceous fruit of plants of the genus Malus in 
@@ -211,14 +215,15 @@ Apple
 Orange
 
 :   The fruit of an evergreen tree of the genus Citrus.
-</pre>
+```
 
 
 
 # 三、道盒Markdown扩展
 
 
-## 宏 {#daobox-macro}
+{#daobox-macro}
+## 宏 
 
 ### TOC (Table of content)
 
@@ -303,9 +308,14 @@ Orange
 
 ## 区块扩展属性
 
-紧挨着区块前面，单独一行，使用大括号包裹属性，多个属性用空格或者逗号隔开。
+紧挨着区块前面，单独一行，使用花括号包裹起来的属性集。如：
 
-目前支持的属性有：
+```markdown
+{color=red tc}
+# 红色的标题
+```
+
+属性集支持以下属性：
 
 1. `#id` 增加ID属性
 1. `.id` 增加CSS样式名称（class）属性
@@ -359,7 +369,7 @@ Orange
 
 对`#`包裹区域增加属性，属性集在前。格式为：
 
-```md
+```markdown
 我是{color=red}#一个#长段落。
 ```
 
@@ -385,18 +395,6 @@ hello <https://www.daobox.cn>{target=_blank color=red} world
 ![Air](https://images.unsplash.com/photo-1564979045531-fa386a275b27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2532&q=80 "蓝天与狗尾巴草"){corner=1em}
 
 ---
-
-### 指定文字区域
-
-```markdown
-{color=red, bgcolor=yellow .nice}#赤色#
-{font=宋体}#我是有不一样的字体#
-```
-
-我有{color=red, bgcolor=yellow .nice .girl}#赤色#的文本和{color=blue}#蓝色#内容。
-
-我的字体是{font="思源宋体 CN"}#思源宋体 CN#,
-我的字体是{font="阿里妈妈东方大楷"}#阿里妈妈东方大楷#,
 
 
 ## 下划线
@@ -460,10 +458,25 @@ I need to highlight these <mark>very important words</mark>.
 1. [HTML特殊符号](https://chaooo.github.io/unicode_css3_content/)
 2. [emoji表情符号](https://gist.github.com/rxaviers/7360908)
 
-:point_right: 查找emoji[表情](https://github-emoji-picker.rickstaa.dev/) :smile: :muscle: 。
+```markdown
+emoji表情符号
+
+:+1:
+```
+
+:+1: :point_right: 查找emoji[表情](https://github-emoji-picker.rickstaa.dev/) :smile: :muscle: 。
 
 
-# 四、参考
+# 四、定义
+
+属性集
+
+:   使用花括号包裹的属性集合，多个属性之间用空格或逗号隔开。
+
+
+# 五、参考
+
+
 
 [^markdown-syntax]: <https://daringfireball.net/projects/markdown/syntax>
 
@@ -471,6 +484,6 @@ I need to highlight these <mark>very important words</mark>.
 
 [道盒发布]: https://publish.daobox.cn
 
-[^slugify]: 通过对文本转换，从而生成有效链接地址。英文字母数字保持原样，空格替换为`-`，中文每个字符转换拼音后，使用`-`连接。==注:exclamation:==：字母+中文的连接处没有连字符`-`，如果需要请在中间添加英文空格。
+[^slugify]: 将文本转换成有效的链接字符。英文字母数字保持原样，空格替换为`-`，中文每个字符转换拼音后，使用`-`连接。==注:exclamation:==：字母+中文的连接处没有连字符`-`，如果需要请在中间添加英文空格。
 
 [道盒笔记]: https://note.daobox.cn
