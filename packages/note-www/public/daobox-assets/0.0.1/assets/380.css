@@ -1,0 +1,20 @@
+.nav-drawer .drawer-mask {
+    z-index: 10;
+    display: block
+}
+  .nav-drawer .drawer-body {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    z-index: 10;
+    display: block;
+    width: 100vw;
+    max-width: 75vw;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    height: auto !important
+}
+  .nav-drawer .drawer-body .tree-node-item {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem
+}

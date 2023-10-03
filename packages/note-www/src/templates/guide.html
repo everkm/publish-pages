@@ -1,0 +1,23 @@
+{% extends "_daobox/layout.html" %}
+{% import "_daobox/blocks.html" as blocks %}
+{% import "_daobox/nav_blocks.html" as nav_blocks %}
+
+
+{% block body %}
+  <div class="mx-auto max-w-screen-lg">
+  <div class=" mb-10 flex">
+    <div class="basis-64 nav-tree invisible">
+      {% set doc = post_detail(path="/古文观止/_nav.md") %}
+      {{doc.content_html | safe}}
+    </div>
+    <div class="flex-1 prose max-w-none">
+        
+      {% set doc = post_detail(path=__qs | get(key="path", default="/古文观止/师说.md")) %}
+      <h1>{{doc.title}}</h1>
+      {{doc.content_html | safe}}
+
+
+    </div>
+  </div>
+</div>
+{% endblock body %}

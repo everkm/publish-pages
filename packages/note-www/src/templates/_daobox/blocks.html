@@ -1,0 +1,111 @@
+
+{% macro breadcrumb(navs) %}
+<div class="block-container mt-4 mb-6">
+    <div class="text-gray-500">
+        {% for nav in navs %}
+        {% if loop.index0 %} &raquo; {% endif %}
+        {% if nav.link %}<a href="{{nav.link|safe}}">{% endif %}
+            {{nav.name}}
+            {% if nav.link %} </a> {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endmacro breadcrumb %}
+
+
+{% macro download_item(file) %}
+{% set cpu_js = `
+function main(name){
+var arr = name.split('-')
+if (arr[3] === 'windows'){
+var s = arr[4].match(/\d+$/)[0]
+return s ? s+'位' : ''
+}
+
+return arr[4].replace(/^\S/,function(s){return s.toUpperCase()})
+}
+main(name)
+` %}
+<div class="flex items-center">
+    <div class="flex-shrink-0 pr-8 h-full">
+        <div class="bg-blue-600 h-full text-white rounded px-3 py-1">{{script(cpu_js, name=file.name)}}</div>
+    </div>
+    <div class="overflow-hidden">
+        <div class="">
+            <span class="w-20 inline-block text-left text-gray-600 pr-2">大小:</span>
+            <span class="text-gray-400">{{file.size | filesizeformat}}</span>
+        </div>
+        <div class="flex-1 flex flex-nowrap">
+            <span class="basis-20 shrink-0  text-left text-gray-600 pr-2">sha512:</span>
+            <span class="flex-1 text-gray-400 min-w-0 text-ellipsis overflow-hidden">{{file.sha512}}</span>
+        </div>
+    </div>
+</div>
+{% endmacro download_item %}
+
+
+{% macro download_card(platform, channel) %}
+{% set meta = ds("https://assets.daobox.cc/daobox-app/" ~ platform ~ "/" ~ channel ~ "/latest.yaml") %}
+<div class=" max-w-md">
+    <div class="flex justify-between items-end mb-1">
+        <div class="text-gray-800 text-xl font-semibold">
+            {{meta.version}}
+            {% if channel == "stable" %}
+            <span class="text-green-700 text-sm">(正式版)</span>
+            {% else %}
+            <span class="text-orange-500 text-sm">(测试版)</span>
+            {% endif %}
+        </div>
+        <div class="text-gray-500">{{ meta.releaseDate | date(format="%Y-%m-%d %H:%M", timezone="Asia/Shanghai") }}
+        </div>
+    </div>
+    <div class="p-3 bg-gray-100 text-sm h-40 rounded">{{meta.releaseNotes}}</div>
+
+    <div class="mt-4 space-y-4">
+        {% for f in meta.files %}
+        {{blocks::download_item(file=f)}}
+        {% endfor %}
+    </div>
+</div>
+{% endmacro download_card %}
+
+
+{% macro download_file_item(file) %}
+<tr class="space-x-4 hover:bg-gray-100">
+    <td class="py-1.5 pl-8 common-tag-a"><a href="{{file.url|safe}}">{{file.file_name}}</a></td>
+    <td class="py-1.5 text-sm text-center">{{file.os}}</td>
+    <td class="py-1.5 text-sm text-center">{{file.arch}}</td>
+    <td class="py-1.5 text-sm text-center">{{file.file_size | filesizeformat}}</td>
+    <td class="py-1.5 "><input type="text" value="{{file.sha256}}" class="w-full text-xs px-2 py-1" disabled /></td>
+</tr>
+{% endmacro download_file_item %}
+
+
+{% macro download_channel(prefix, channel) %}
+{% set meta = ds(prefix ~ channel ~ "/dist.json") %}
+<div class="versions-tab-container block-container invisible">
+    {% if meta.versions %}
+    {% for vi in meta.versions %}
+    <h3 class="version-header bg-gray-200 px-1 py-2.5 text-lg font-medium mt-4 mb-1 flex items-center cursor-pointer select-none">
+        <img src="@/assets/img/arrow-down.svg" class="expand-state w-5 h-5 {%if loop.index0 > 0%}-rotate-90{%endif%}" />
+        {{vi.version}}</h3>
+
+    <table class="w-full {%if loop.index0 > 0%}hidden{%endif%}">
+        <thead class="font-bold text-lg">
+            <th class="py-1 text-left pl-8">文件名</a></th>
+            <th class="py-1 ">系统</th>
+            <th class="py-1 ">CPU架构</th>
+            <th class="py-1 ">文件大小</th>
+            <th class="py-1 ">Sha256指纹</th>
+        </thead>
+
+        {% for item in vi.items %}
+        {{self::download_file_item(file=item)}}
+        {% endfor %}
+    </table>
+    {% endfor %}
+    {% else %}
+    <div class="text-3xl mt-20 text-center text-gray-300">暂无可用版本</div>
+    {% endif %}
+</div>
+{% endmacro download_channel %}

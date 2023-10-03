@@ -1,0 +1,10 @@
+name: daobox-note
+author: dayu<dayu@dayu.me>
+repository: https://github.com/daobox-theme/yilog
+demo: https://yilog.theme.daobox.cc/
+
+context:
+  - location:
+      - /docs/
+    qs:
+      __tpl: /details2.html

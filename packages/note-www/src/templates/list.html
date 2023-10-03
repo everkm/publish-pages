@@ -1,0 +1,58 @@
+{% extends "_daobox/layout.html" %}
+{% import "_daobox/blocks.html" as blocks %}
+{% import "_daobox/nav_blocks.html" as nav_blocks %}
+
+
+{% block body %}
+  <div class="mx-auto max-w-screen-md">
+  <div class=" mb-10">
+    <div class="prose max-w-none px-4 pt-3 md:px-0">
+      {{ t("我爱你中国") | md }}
+
+      {% set doc = post_detail(path="/demo/meta.md") %}
+      {{doc.content_html | safe}}
+
+
+
+      {% set page_no =__qs.page | default(value=1) | int %}
+      {% set start = (page_no - 1) * 5 %}
+      {% set end = start + 5 %}
+      {% set items = posts(dir="/demo", recursive=true) %}
+      {% set page_count = script("Math.ceil(val)", val = items | length / 5 ) %}
+      {% for doc in items | slice(start=start, end=end) %}
+      <div class="my-4">
+        <h1 class="font-medium text-xl !my-0 py-0">
+          <a href="{{base_url()}}/details/{{ doc.meta | get(key="slug", default = doc.title | slugify) }}.html?id={{doc.id}}&__tpl={{"view/details.html"|urlencode_strict}}" target="_blank">{{doc.title}}</a>
+        </h1>
+        <div class="text-gray-500">{{doc.date | date(format="%Y-%m-%d %H:%M")}}</div>
+      </div>
+      {% endfor %}
+
+      {% if  page_count > 0 %}
+      <div class="space-x-6 flex !mt-10 text-sm">
+        {% if page_no > 1 %}
+        <div class="flex items-center space-x-1">
+            {% if page_no == 2 %}
+            {{nav_blocks::arrow_left()}}
+            <a href="list.html">上一页</a>
+            {% elif page_no > 2 %}
+            {{nav_blocks::arrow_left()}}
+            <a href="list.p{{page_no-1}}.html?page={{page_no-1}}">上一页</a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="">{{page_no}} / {{page_count}}</div>
+            
+        {% if items | length > end %}
+        <div class="flex items-center space-x-1">
+            <a href="list.p{{page_no+1}}.html?page={{page_no+1}}">下一页</a>
+            {{nav_blocks::arrow_right()}}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock body %}
