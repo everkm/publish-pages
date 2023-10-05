@@ -1,15 +1,16 @@
 {% import "_daobox/widgets/drawer_aside.html" as drawer_blocks %}
 
 {% macro app_header(with_menu=false) %}
+{% set site = ds(src="my_site.toml") %}
 <div class="flex justify-between items-center px-4 py-3 md:px-8">
     <div class="flex items-center">
         <a href="{{base_url()}}/">
-            <img src="@/assets/img/logo-m@2x.png" class="inline-block mr-2 w-8 h-8 font-medium" alt="道盒" />
+            <img src="@/assets/img/logo-m@2x.png" class="inline-block mr-2 w-8 h-8 font-medium" alt="{{site.name}}" />
         </a>
 
         <div>
-            <span class="text-lg font-medium">道盒笔记</span>
-            <span class="hidden lg:inline-block  text-gray-600 text-xs">写我们的故事</span>
+            <span class="text-lg font-medium">{{site.name}}</span>
+            <span class="hidden lg:inline-block  text-gray-600 text-xs">{{site.slogan}}</span>
         </div>
     </div>
     <div class="hidden md:flex space-x-2">

@@ -18,7 +18,9 @@
 {% block body %}
 <div class="mx-auto mb-10 px-6 lg:px-0 prose pt-4">
 
-  <h2>{{cfg[0].title}}</h2>
+  {% set site = ds(src="my_site.toml") %}
+
+  <h2>{{site.name}}</h2>
 
   {% set doc = post_detail(path="/_page/home.md") %}
 

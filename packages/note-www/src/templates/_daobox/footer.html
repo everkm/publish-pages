@@ -1,11 +1,18 @@
 <div class="footer text-center space-y-3 py-8">
     <div class="footer-nav text-sm">
-        <div><a href="https://www.daobox.cn">道盒</a></div>
-        <div><a href="https://publish.daobox.cn">道盒发布</a></div>
-        <div><a href="https://note.daobox.cn">道盒笔记</a></div>
+        {% set site = ds(src="my_site.toml") %}
+        {% for nav in site.bottom_nav %}
+        <div><a href="{{nav.url}}">{{nav.title}}</a></div>
+        {% endfor %}
     </div>
     <div class="!text-gray-500 text-xs">
-        <span>毓知信息</span>
-        <a href="https://beian.miit.gov.cn/" target="_blank" class="!text-gray-500">鄂ICP备2023015790号</a>
+        {% if site.owner_corp %}
+        <span>{{site.owner_corp}}</span>
+        {% endif %}
+        
+        
+        {% if site.beian %}
+        <a href="https://beian.miit.gov.cn/" target="_blank" class="!text-gray-500">{{site.beian}}</a>
+        {% endif %}
     </div>
 </div>

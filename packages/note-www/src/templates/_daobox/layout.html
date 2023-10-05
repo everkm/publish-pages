@@ -1,10 +1,10 @@
 {% import "_daobox/common_blocks.html" as common_blocks %}
-
+{% set site = ds(src="my_site.toml") %}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>道盒笔记</title>
+    <title>{{site.name}}</title>
     <meta name="description" content="{%block page_description%}{%endblock page_description%}" />
     <meta name="keywords" content="{%block page_keywords%}{%endblock page_keywords%}" />
     {% block meta %}
