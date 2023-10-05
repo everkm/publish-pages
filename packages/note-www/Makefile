@@ -6,10 +6,10 @@ tag:
 	fi
 
 
-# @VITE_RELEASE=prod ~/.cargo/bin/daobox-publish serve \
+# @~/.cargo/bin/daobox-publish serve \
 
 serve:
-	@VITE_RELEASE=prod RUST_BACKTRACE=0 DAOBOX_LOG=info \
+	@RUST_BACKTRACE=0 DAOBOX_LOG=info \
 		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
 		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
 		DAOBOX_LANG=zh_CN \
@@ -19,7 +19,7 @@ serve:
 		--listen=0.0.0.0:9081
 
 work:
-	@VITE_RELEASE=prod RUST_BACKTRACE=0 DAOBOX_LOG=info \
+	@RUST_BACKTRACE=0 DAOBOX_LOG=info \
 		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
 		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
 		DAOBOX_LANG=zh_CN \
@@ -31,6 +31,7 @@ work:
 export-all:
 	@DAOBOX_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
 		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
+		DAOBOX_LANG=zh_CN \
 		./node_modules/.bin/daobox-publish serve \
 		--dev-dir ./ \
 		--export
