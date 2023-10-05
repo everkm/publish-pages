@@ -258,6 +258,7 @@ Orange
 * `code_lang` 可选。编程语言，仅 `as="code"` 时有效。
 * `table_header` 可选。第一行是否为表头，仅 `as="table"` 时有效。
 * `table_merge` 可选。是否自动合并单元格。值与单元格内容相同则合并，合并顺序为先列后行。例如：合并所有空内容的单元格，可以使用参数 `merge_cell=""`。仅 `as="table"` 时有效。
+* `csv_delimiter` 可选。指定csv分隔符，默认 `,`。
 
 **包含外部Markdown示例：**
 
