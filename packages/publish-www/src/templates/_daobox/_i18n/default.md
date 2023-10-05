@@ -1,8 +1,44 @@
-# 我爱你中国
+# site name
+道盒发布
 
-## 道盒发布
+# site slogan
+我的风格我做主
 
-免费、灵活的建站工具。
+# channel home
+首页
 
-无论是企业官网，还是发布，又或者是落地页，只要你有想法，对着文档，就拥有你所想！
+# channel download
+下载
 
+# channel docs
+文档
+
+# channel changelog
+更新日志
+
+# version stable
+正式版
+
+# version beta
+公测版
+
+# version alpha
+内测版
+
+# no available download
+暂无可用版本
+
+# download meta name
+名称
+
+# download meta os
+系统
+
+# download meta cpu
+CPU
+
+# download meta capacity
+大小
+
+# download meta sha256
+SHA256

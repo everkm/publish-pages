@@ -1,0 +1,17 @@
+# 版权公司
+owner_corp = "毓知信息"
+
+# 备案号
+beian = "鄂ICP备2023015790号"
+
+[[bottom_nav]]
+title = "道盒"
+url = "https://www.daobox.cn"
+
+[[bottom_nav]]
+title = "道盒发布"
+url = "https://publish.daobox.cn"
+
+[[bottom_nav]]
+title = "道盒笔记"
+url = "https://note.daobox.cn"

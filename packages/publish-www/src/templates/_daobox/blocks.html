@@ -51,9 +51,9 @@ main(args.name)
         <div class="text-gray-800 text-xl font-semibold">
             {{meta.version}}
             {% if channel == "stable" %}
-            <span class="text-green-700 text-sm">(正式版)</span>
+            <span class="text-green-700 text-sm">({{t(text="version stable")}})</span>
             {% else %}
-            <span class="text-orange-500 text-sm">(测试版)</span>
+            <span class="text-orange-500 text-sm">({{t(text="version beta")}})</span>
             {% endif %}
         </div>
         <div class="text-gray-500">{{ meta.releaseDate | date(format="%Y-%m-%d %H:%M", timezone="Asia/Shanghai") }}
@@ -92,11 +92,11 @@ main(args.name)
 
     <table class="w-full {%if loop.index0 > 0%}hidden{%endif%}">
         <thead class="font-bold text-lg">
-            <th class="py-1 text-left pl-8">文件名</a></th>
-            <th class="py-1 ">系统</th>
-            <th class="py-1 ">CPU架构</th>
-            <th class="py-1 ">文件大小</th>
-            <th class="py-1 ">Sha256指纹</th>
+            <th class="py-1 text-left pl-8">{{t(text="download meta name")}}</a></th>
+            <th class="py-1 ">{{t(text="download meta os")}}</th>
+            <th class="py-1 ">{{t(text="download meta cpu")}}</th>
+            <th class="py-1 ">{{t(text="download meta capacity")}}</th>
+            <th class="py-1 ">{{t(text="download meta sha256")}}</th>
         </thead>
 
         {% for item in vi.items %}
@@ -105,7 +105,7 @@ main(args.name)
     </table>
     {% endfor %}
     {% else %}
-    <div class="text-3xl mt-20 text-center text-gray-300">暂无可用版本</div>
+    <div class="text-3xl mt-20 text-center text-gray-300">{{t(text="no available download")}}</div>
     {% endif %}
 </div>
 {% endmacro download_channel %}
