@@ -18,6 +18,16 @@ serve:
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
 
+work:
+	@VITE_RELEASE=prod RUST_BACKTRACE=0 DAOBOX_LOG=info \
+		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
+		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
+		DAOBOX_LANG=zh_CN \
+		DAOBOX_LANG=en_US \
+		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
+		--work-dir ./ \
+		--listen=0.0.0.0:9081
+
 export-all:
 	@DAOBOX_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
 		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
@@ -25,11 +35,12 @@ export-all:
 		--dev-dir ./ \
 		--export
 
-package-tpls:
-	@~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish package-tpls \
+package-theme:
+	@RUST_BACKTRACE=1 \
+		DAOBOX_LOG=info,img_assets=info \
+		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish package-theme \
 		--dev-dir ./ \
-		--dist-dir ./dist \
-		--with-tpls
+		--dist-dir ./dist
 
 fe-dev:
 	pnpm run dev
@@ -39,7 +50,9 @@ fe-build:
 
 dist: fe-build export-all copy-daobox-assets 
 
-dist-tpls: fe-build package-tpls
+dist-theme: fe-build package-theme
+	@if [ ! -d theme/dev ]; then mkdir -p theme/dev; fi
+	@cp -r dist/* theme/dev/
 
 copy-daobox-assets:
 	@if [ ! -d dist/assets ]; then mkdir -p dist/assets; fi
