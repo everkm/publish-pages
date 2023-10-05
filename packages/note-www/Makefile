@@ -40,8 +40,7 @@ package-theme:
 	@RUST_BACKTRACE=1 \
 		DAOBOX_LOG=info,img_assets=info \
 		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish package-theme \
-		--dev-dir ./ \
-		--dist-dir ./dist
+		--dev-dir ./ 
 
 fe-dev:
 	pnpm run dev
