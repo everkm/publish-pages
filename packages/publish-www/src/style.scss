@@ -1,6 +1,8 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 
 html {
@@ -9,6 +11,10 @@ html {
 
 .block-container {
   @apply w-full max-w-screen-lg mx-auto px-6 md:px-8 2xl:px-0;
+}
+
+.markdown-body{
+  @apply max-w-4xl !mx-auto;
 }
 
 .footer {
@@ -55,9 +61,6 @@ a {
   top: 0;
 }
 
-code {
-  @apply !text-[0.85em];
-}
 
 .block-formula{
   @apply text-center

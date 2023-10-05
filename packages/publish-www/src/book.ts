@@ -1,5 +1,6 @@
 import './style.scss'
 import './nav_tree.scss'
+import './assets/github-markdown.css'
 import $ from 'cash-dom'
 
 const win = globalThis.window as any

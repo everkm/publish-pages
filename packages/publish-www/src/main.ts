@@ -1,4 +1,6 @@
 import './style.scss'
+import './assets/github-markdown.css'
+
 
 const win = globalThis.window as any
 win.daobox.site.setupLayoutHeight()
