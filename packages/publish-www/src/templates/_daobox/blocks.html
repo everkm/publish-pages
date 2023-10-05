@@ -4,7 +4,7 @@
     <div class="text-gray-500">
         {% for nav in navs %}
         {% if loop.index0 %} &raquo; {% endif %}
-        {% if nav.link %}<a href="{{nav.link|safe}}">{% endif %}
+        {% if nav.link %}<a href="{{base_url()}}{{nav.link|safe}}">{% endif %}
             {{nav.name}}
             {% if nav.link %} </a> {% endif %}
         {% endfor %}
@@ -24,11 +24,11 @@ return s ? s+'位' : ''
 
 return arr[4].replace(/^\S/,function(s){return s.toUpperCase()})
 }
-main(name)
+main(args.name)
 ` %}
 <div class="flex items-center">
     <div class="flex-shrink-0 pr-8 h-full">
-        <div class="bg-blue-600 h-full text-white rounded px-3 py-1">{{script(cpu_js, name=file.name)}}</div>
+        <div class="bg-blue-600 h-full text-white rounded px-3 py-1">{{script(content=cpu_js, name=file.name)}}</div>
     </div>
     <div class="overflow-hidden">
         <div class="">
@@ -45,7 +45,7 @@ main(name)
 
 
 {% macro download_card(platform, channel) %}
-{% set meta = ds("https://assets.daobox.cc/daobox-app/" ~ platform ~ "/" ~ channel ~ "/latest.yaml") %}
+{% set meta = ds(src="https://assets.daobox.cc/daobox-app/" ~ platform ~ "/" ~ channel ~ "/latest.yaml") %}
 <div class=" max-w-md">
     <div class="flex justify-between items-end mb-1">
         <div class="text-gray-800 text-xl font-semibold">
@@ -82,7 +82,7 @@ main(name)
 
 
 {% macro download_channel(prefix, channel) %}
-{% set meta = ds(prefix ~ channel ~ "/dist.json") %}
+{% set meta = ds(src=prefix ~ channel ~ "/dist.json") %}
 <div class="versions-tab-container block-container invisible">
     {% if meta.versions %}
     {% for vi in meta.versions %}

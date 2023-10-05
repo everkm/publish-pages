@@ -14,15 +14,15 @@
 [
   {
     "name": "首页",
-    "link": "."
+    "link": "/"
   },
   {
     "name": "下载中心",
     "link": ""
-  }
+  },
 ]
 ` %}
-{{ blocks::breadcrumb(navs = script(nav_js)) }}
+{{ blocks::breadcrumb(navs = script(content=nav_js)) }}
 
 
 
@@ -31,7 +31,7 @@
   <a href="#beta" class="versions-tab-header !no-underline rounded-sm hover:bg-gray-100 cursor-pointer px-5 py-2">公测版</a>
   <a href="#alpha" class="versions-tab-header !no-underline rounded-sm hover:bg-gray-100 cursor-pointer px-5 py-2">内测版</a>
 </div>
-{% set prefix = "https://assets.daobox.cc/daobox-site/" %}
+{% set prefix = "https://assets.daobox.cc/daobox-publish/" %}
 {{blocks::download_channel(prefix=prefix, channel="stable")}}
 {{blocks::download_channel(prefix=prefix, channel="beta")}}
 {{blocks::download_channel(prefix=prefix, channel="alpha")}}
