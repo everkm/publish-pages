@@ -76,7 +76,7 @@ main(args.name)
     <td class="py-1.5 text-sm text-center">{{file.os}}</td>
     <td class="py-1.5 text-sm text-center">{{file.arch}}</td>
     <td class="py-1.5 text-sm text-center">{{file.file_size | filesizeformat}}</td>
-    <td class="py-1.5 "><input type="text" value="{{file.sha256}}" class="w-full text-xs px-2 py-1" disabled /></td>
+    <td class="py-1.5 pr-2"><input type="text" value="{{file.sha256}}" class="w-full text-xs px-0 py-1 bg-white" disabled /></td>
 </tr>
 {% endmacro download_file_item %}
 

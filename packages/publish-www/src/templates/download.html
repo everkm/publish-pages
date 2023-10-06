@@ -10,7 +10,7 @@
 
 {% block body %}
 
-{% set nav_js = `
+{% set nav_items = `
 [
   {
     "name": "` ~ t(text="channel home") ~ `",
@@ -19,10 +19,10 @@
   {
     "name": "` ~ t(text="channel download") ~ `",
     "link": ""
-  },
+  }
 ]
 ` %}
-{{ blocks::breadcrumb(navs = script(content=nav_js)) }}
+{{ blocks::breadcrumb(navs = json(text=nav_items)) }}
 
 
 
