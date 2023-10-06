@@ -3,10 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  li {
+    list-style: initial;
+  }
+}
 
 
 html {
-  @apply text-[20px] lg:text-[18px];
+  @apply text-[18px] lg:text-[16px];
 }
 
 .block-container {
@@ -84,6 +89,7 @@ h6 .heading-anchor,
 h7 .heading-anchor{
     visibility: hidden;
     @apply inline-block !no-underline;
+    margin-left: 0.2em;
     width: 1em;
     height: 1em;
     background-position: center;
@@ -104,4 +110,17 @@ h7:hover .heading-anchor{
 
 td:nth-of-type(-n+4) {
     white-space: nowrap;
+}
+
+
+#js-toc{
+  li{
+    list-style: none;
+  }
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: 0.92em !important;
+  font-family: monospace, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono' !important;
 }
