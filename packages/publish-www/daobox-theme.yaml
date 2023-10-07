@@ -7,7 +7,7 @@ context:
   - location:
       - /docs/
     qs:
-      __tpl: /book.html
+      __tpl: /book2.html
       nav: /docs/_nav.md
       ajax: /docs/
   - location:

@@ -32,35 +32,40 @@
     <div class="book flex">
 
         <!-- header -->
-        <div class="app-header border-b fixed top-0 z-10 w-full h-12 bg-white grid grid-cols-[3rem_1fr_3rem]">
-            <div class="">Menu</div>
-            <div class="text-center">title</div>
-            <div class="">Search</div>
+        <div class="app-header border-b fixed top-0 z-10 w-full h-12 bg-white grid grid-cols-[1fr_1fr] items-center">
+            {{common_blocks::app_header(with_menu=true)}}
         </div>
 
 
         <!-- body -->
-        <div id="main-section" class="mx-auto max-w-screen-2xl pt-12 w-full mt-[var(--app-header-height)] md:grid md:grid-cols-[minmax(250px,2fr)_5fr]">
-
-            <div class="hidden fixed top-0 left-0 w-3/4 max-w-xs bg-slate-100 z-10 border overflow-y-scroll h-screen border-red-200 md:h-[calc(100vh-3rem)] md:bl md:w-full md:max-w-none md:top-[3rem] md:sticky md:block">
-                <div class="">
-                    {% for i in range(end=50) %}
-                    <p>nav {{i}}</p>
-                    {% endfor %}
+        <div id="main-section" class="mx-auto max-w-screen-2xl w-full mt-[var(--app-header-height)] md:grid md:grid-cols-[minmax(250px,2fr)_5fr]">
+            
+            <!-- 左导航栏 -->
+            <div class="hidden fixed top-0 left-0 w-3/4 max-w-xs bg-slate-100 p-4 z-10 border overflow-y-scroll h-screen border-red-200 md:h-[calc(100vh-3rem)] md:w-full md:max-w-none md:top-[3rem] md:sticky md:block">
+                {{drawer_blocks::mask()}}
+                <div class="md:hidden">
+                    {{common_blocks::first_nav()}}
                 </div>
+
+                {% set nav_doc = post_detail(path=__qs.nav) %}
+                {{drawer_blocks::drawer_aside(body=nav_doc.content_html)}}
             </div>
 
             <div class=" border lg:grid lg:grid-cols-[2fr_minmax(200px,1fr)]">
                 <div class="">
-                    <div class="">title </div>
-                    <div class="lg:hidden sticky top-[3rem] left-0 bg-gray-100">inner toc</div>
-                    <div class="">
-                        {% for i in range(end=100) %}
-                        <p>content {{i}}</p>
-                        {% endfor %}
+                    <h1 class="text-4xl font-medium mt-6 mb-2 text-center px-4 md:px-8">{{doc.title}}</h1>
+
+                    <div class="lg:hidden sticky top-[3rem] z-10 left-0 bg-gray-100 px-4 md:px-8">
+                        {{article_toc_blocks::inner_holder2()}}
+                    </div>
+
+                    <div id="yb-content" class="yb-content-view markdown-body max-w-none js-toc-content relative px-4 md:px-8">
+                        {{doc.content_html | safe}}
                     </div>
                 </div>
-                <div class="hidden lg:block sticky top-[3rem] overflow-y-scroll w-full border border-red-200" style="height:calc(100vh - 3rem);"">
+
+                <div class="hidden lg:block sticky top-[3rem] overflow-y-scroll w-full overscroll-contain border border-red-200" style="height:calc(100vh - 3rem);"">
+                    {{article_toc_blocks::mount_holder()}}
                     {% for i in range(end=50) %}
                     <p>toc {{i}}</p>
                     {% endfor %}
@@ -72,6 +77,7 @@
 
 
     </div>
+    <script src="{{get_env(name="DAOBOX_SITE_ASSETS")|safe}}/assets/daobox.js"></script>
     {{assets(type="js", section="book")}}
 </body>
 
