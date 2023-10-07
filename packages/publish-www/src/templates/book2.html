@@ -38,7 +38,7 @@
 
 
         <!-- body -->
-        <div id="main-section" class="mx-auto max-w-screen-2xl w-full mt-[3rem] md:grid md:grid-cols-[minmax(250px,2fr)_5fr]">
+        <div id="main-section" class="mx-auto max-w-screen-2xl w-full mt-[3rem] md:grid md:grid-cols-[minmax(250px,2fr)_6fr]">
             
             <!-- 左导航栏 -->
             <div id="aside-nav" class="hidden fixed top-0 w-3/4 max-w-xs px-4 z-20 overscroll-contain border-r overflow-y-auto h-screen md:h-[calc(100vh-3rem)] md:w-full md:max-w-none md:top-[3rem] md:sticky md:block">
@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <div class=" lg:grid lg:grid-cols-[2fr_minmax(200px,1fr)] min-w-0">
+            <div class=" lg:grid lg:grid-cols-[5fr_minmax(200px,2fr)] min-w-0">
                 <div class="min-w-0 space-y-3">
                     <h1 class="text-4xl font-medium mt-6 mb-4 text-center px-4 md:px-8">{{doc.title}}</h1>
 
@@ -75,7 +75,7 @@
                 <div class="hidden lg:block sticky top-[3rem] overflow-y-scroll w-full overscroll-contain" style="height:calc(100vh - 3rem);"">
                     <div class="my-4">
                         {{article_toc_blocks::mount_holder()}}
-                        
+
                         <!-- {% for i in range(end=50) %}
                         <p>toc {{i}}</p>
                         {% endfor %} -->
