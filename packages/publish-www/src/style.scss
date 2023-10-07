@@ -23,8 +23,7 @@ html {
 }
 
 .footer {
-  @apply w-full flex flex-col justify-center;
-  height: 8rem;
+  @apply w-full flex flex-col justify-center pt-6 pb-4;
 }
 
 .footer-nav {
