@@ -133,3 +133,8 @@ pre[class*="language-"] {
   @apply !mx-0 px-4;
 }
 
+.nav-tree{
+  .is-folder{
+    @apply font-medium;
+  }
+}
