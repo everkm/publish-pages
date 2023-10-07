@@ -16,7 +16,7 @@ win.daobox.site.setupDrawerToggle('#aside-nav', '#drawer')
     const titleElement = doc.querySelector('title')
 
     globalThis.document.title = titleElement?.textContent?.trim() || ''
-    $('#doc-body').html(doc.querySelector('#doc-body')?.innerHTML || '')
+    $('#article-body').html(doc.querySelector('#article-body')?.innerHTML || '')
     globalThis.window.scroll(0, 0)
 
     updateToc()
