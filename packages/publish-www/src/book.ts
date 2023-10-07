@@ -7,7 +7,7 @@ const win = globalThis.window as any
 win.daobox.site.setupLayoutHeight()
 win.daobox.site.lazyImg()
 win.daobox.site.initFormulaView()
-win.daobox.site.setupDrawerToggle('#main-body', '#drawer')
+win.daobox.site.setupDrawerToggle('#aside-nav', '#drawer')
 ;(async () => {
   const updateNavActive = await win.daobox.site.buildNavTree('.nav-tree', -1)
   const updateToc = await win.daobox.site.setupToc('.js-toc-content', '#js-toc')

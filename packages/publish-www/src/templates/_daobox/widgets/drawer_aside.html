@@ -1,5 +1,5 @@
 {% macro drawer_aside(body) %}
-<div id="book-aside" class="h-full relative w-full text-base">
+<div id="book-aside" class="w-full text-base">
     <div id="book-nav" class="flex flex-col h-full">
         <div class="nav-tree invisible flex-1 overflow-auto overscroll-contain">
             {{body|safe}}
@@ -10,7 +10,7 @@
 
 
 {% macro mask() %}
-<div class="drawer-mask hidden fixed bg-black opacity-20 inset-x-0 inset-y-0"></div>
+<div class="drawer-mask"></div>
 {% endmacro icon_button %}
 
 
