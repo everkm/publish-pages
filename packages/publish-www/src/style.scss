@@ -113,14 +113,19 @@ td:nth-of-type(-n+4) {
 }
 
 
-.toc-content{
+/* .toc-content{
   li{
     list-style: none;
   }
-}
+} */
 
 code[class*="language-"],
 pre[class*="language-"] {
   font-size: 0.92em !important;
   font-family: monospace, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono' !important;
+}
+
+
+.inner-toc{
+  @apply border px-2;
 }
