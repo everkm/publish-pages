@@ -41,7 +41,7 @@
         <div id="main-section" class="mx-auto max-w-screen-2xl w-full mt-[var(--app-header-height)] md:grid md:grid-cols-[minmax(250px,2fr)_5fr]">
             
             <!-- 左导航栏 -->
-            <div class="hidden fixed top-0 left-0 w-3/4 max-w-xs bg-slate-100 p-4 z-10 border overflow-y-scroll h-screen border-red-200 md:h-[calc(100vh-3rem)] md:w-full md:max-w-none md:top-[3rem] md:sticky md:block">
+            <div class="hidden fixed top-0 w-3/4 max-w-xs bg-slate-100 px-4 py-2 z-10 overscroll-contain border-r overflow-y-scroll h-screen md:h-[calc(100vh-3rem)] md:w-full md:max-w-none md:top-[3rem] md:sticky md:block">
                 {{drawer_blocks::mask()}}
                 <div class="md:hidden">
                     {{common_blocks::first_nav()}}
@@ -51,24 +51,26 @@
                 {{drawer_blocks::drawer_aside(body=nav_doc.content_html)}}
             </div>
 
-            <div class=" border lg:grid lg:grid-cols-[2fr_minmax(200px,1fr)]">
-                <div class="">
+            <div class=" border lg:grid lg:grid-cols-[2fr_minmax(200px,1fr)] min-w-0">
+                <div class="min-w-0">
                     <h1 class="text-4xl font-medium mt-6 mb-2 text-center px-4 md:px-8">{{doc.title}}</h1>
 
-                    <div class="lg:hidden sticky top-[3rem] z-10 left-0 bg-gray-100 px-4 md:px-8">
+                    <div class="lg:hidden sticky top-[3rem] z-10 bg-gray-100 px-4 md:px-8">
                         {{article_toc_blocks::inner_holder2()}}
                     </div>
 
-                    <div id="yb-content" class="yb-content-view markdown-body max-w-none js-toc-content relative px-4 md:px-8">
+                    <div id="yb-content" style="max-width: 100%; " class="overflow-x-hidden yb-content-view markdown-body js-toc-content relative px-4 md:px-8">
                         {{doc.content_html | safe}}
                     </div>
                 </div>
 
-                <div class="hidden lg:block sticky top-[3rem] overflow-y-scroll w-full overscroll-contain border border-red-200" style="height:calc(100vh - 3rem);"">
-                    {{article_toc_blocks::mount_holder()}}
-                    {% for i in range(end=50) %}
-                    <p>toc {{i}}</p>
-                    {% endfor %}
+                <div class="hidden lg:block sticky top-[3rem] overflow-y-scroll w-full overscroll-contain" style="height:calc(100vh - 3rem);"">
+                    <div class="my-4">
+                        {{article_toc_blocks::mount_holder()}}
+                        {% for i in range(end=50) %}
+                        <p>toc {{i}}</p>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
