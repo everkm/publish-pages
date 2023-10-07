@@ -129,3 +129,7 @@ pre[class*="language-"] {
 .inner-toc{
   @apply border px-2;
 }
+
+.inner-toc-sticky{
+  @apply !mx-0 px-4;
+}

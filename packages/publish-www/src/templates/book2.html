@@ -51,11 +51,11 @@
                 {{drawer_blocks::drawer_aside(body=nav_doc.content_html)}}
             </div>
 
-            <div class=" border lg:grid lg:grid-cols-[2fr_minmax(200px,1fr)] min-w-0">
-                <div class="min-w-0">
-                    <h1 class="text-4xl font-medium mt-6 mb-2 text-center px-4 md:px-8">{{doc.title}}</h1>
+            <div class=" lg:grid lg:grid-cols-[2fr_minmax(200px,1fr)] min-w-0">
+                <div class="min-w-0 space-y-3">
+                    <h1 class="text-4xl font-medium mt-6 mb-4 text-center px-4 md:px-8">{{doc.title}}</h1>
 
-                    <div class="lg:hidden sticky left-0 top-[3rem] z-10 bg-white inner-toc-container">
+                    <div class=" sticky top-[3rem] z-10 bg-white inner-toc-container">
                         {{article_toc_blocks::inner_holder2()}}
                     </div>
 

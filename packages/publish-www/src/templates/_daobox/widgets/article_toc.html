@@ -14,9 +14,10 @@
 
 
 {% macro inner_holder2() %}
-<div class="inner-toc">
+<div data-scope="inner-toc-intersection"></div>
+<div class="inner-toc hidden mx-4 md:mx-8 ">
     <div class="inner-toc-holder py-1.5 cursor-pointer flex items-center ">
-        本页目录2
+        本页目录
         <div class="toc-expand-icon inline-block w-3 h-3 ml-1.5 fill-black/40 rotate-90">
             {% include "_daobox/icons/up_triangle.svg" %}
         </div>
