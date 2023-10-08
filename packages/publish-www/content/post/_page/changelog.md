@@ -8,8 +8,8 @@ date: 2023-10-09 08:08
 
 **新增**
 
-- 模板过滤器 [`json`](内置过滤器.md#json)
-- 模板过滤器 [`md_html`](内置过滤器.md#markdown), 别名 [`markdown_html`](内置过滤器.md#markdown)
+- 模板过滤器 [`json`](内置过滤器#json)
+- 模板过滤器 [`md_html`](内置过滤器#markdown_html), 别名 [`markdown_html`](内置过滤器#markdown_html)
 
 ## v0.8.2 (2023-10-08)
 
