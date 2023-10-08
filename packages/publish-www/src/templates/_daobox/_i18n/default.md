@@ -20,7 +20,7 @@
 正式版
 
 # version beta
-公测版
+测试版
 
 # version alpha
 内测版
