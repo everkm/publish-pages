@@ -1,4 +1,5 @@
 {% import "_daobox/common_blocks.html" as common_blocks %}
+{% import "_daobox/nav_blocks.html" as nav_blocks %}
 {% import "_daobox/widgets/drawer_aside.html" as drawer_blocks %}
 {% import "_daobox/widgets/article_toc.html" as article_toc_blocks %}
 
@@ -69,6 +70,11 @@
 
                     <div id="yb-content" class="overflow-x-hidden yb-content-view markdown-body js-toc-content relative px-4 md:px-8">
                         {{doc.content_html | safe}}
+                    </div>
+
+                    <div class="!mt-10 px-4 md:px-8">
+                        {% set nav_meta = nav_indicator(from_file=__qs.nav) %}
+                        {{nav_blocks::page_indicator(nav=nav_meta)}}
                     </div>
 
                     {% include "_daobox/footer.html" %}

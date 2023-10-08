@@ -9,7 +9,7 @@ tag:
 # @VITE_RELEASE=prod ~/.cargo/bin/daobox-publish serve \
 
 serve:
-	@VITE_RELEASE=prod RUST_BACKTRACE=0 DAOBOX_LOG=info \
+	@VITE_RELEASE=prod RUST_BACKTRACE=0 DAOBOX_LOG=info,daobox_publish=debug \
 		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
 		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
 		DAOBOX_SITE_ASSETS=http://192.168.31.239:9070 \
