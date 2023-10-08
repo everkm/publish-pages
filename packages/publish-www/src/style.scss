@@ -11,7 +11,14 @@
 
 
 html {
-  @apply text-[18px] lg:text-[16px];
+  @apply text-[14px] ;
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  html {
+    font-size: 16px;
+  }
 }
 
 .block-container {
@@ -130,7 +137,7 @@ pre[class*="language-"] {
 }
 
 .inner-toc-sticky{
-  @apply !mx-0 px-4;
+  @apply !mx-0 !px-4;
 }
 
 .nav-tree{

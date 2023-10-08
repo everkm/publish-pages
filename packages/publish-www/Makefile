@@ -12,7 +12,7 @@ serve:
 	@VITE_RELEASE=prod RUST_BACKTRACE=0 DAOBOX_LOG=info \
 		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
 		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
-		DAOBOX_SITE_ASSETS=http://localhost:9070 \
+		DAOBOX_SITE_ASSETS=http://192.168.31.239:9070 \
 		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
