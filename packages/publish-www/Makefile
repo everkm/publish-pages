@@ -60,4 +60,4 @@ web:
 
 daobox-assets-server:
 	@./node_modules/.bin/daobox-publish web \
-		--work-dir public --listen 0.0.0.0:9082
+		--work-dir ~/Coder/www.daobox.cn/packages/daobox-assets/dist --listen 0.0.0.0:9070
