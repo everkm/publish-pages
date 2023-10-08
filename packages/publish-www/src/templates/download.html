@@ -22,7 +22,7 @@
   }
 ]
 ` %}
-{{ blocks::breadcrumb(navs = json(text=nav_items)) }}
+{{ blocks::breadcrumb(navs = nav_items | json) }}
 
 
 
