@@ -8,10 +8,10 @@ import Tab from './assets/js/Tab'
 function initReleaseTab() {
   const tab = new Tab('.versions-tab-header', '.versions-tab-container')
 
-  const channels = ['#stable', '#beta', '#alpha']
+  const channels = ['#stable', '#beta']
   let idx = channels.indexOf(window.location.hash)
   if (idx === -1) {
-    idx = 1
+    idx = 0
   }
   tab.select(idx)
 }
