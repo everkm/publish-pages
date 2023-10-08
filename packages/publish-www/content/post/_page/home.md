@@ -31,4 +31,7 @@ description: 基于Markdown内容的渲染工具，输出页面结构不限、�
 
 内容创作时，可及时预览。支持模板开发热加载。
 
-[模板语法](~/docs/)
+## 使用文档
+
+- [模板语法](~/docs/)
+- [道盒Mardown扩展](https://note.daobox.cn/docs/daobox-markdown.html)
