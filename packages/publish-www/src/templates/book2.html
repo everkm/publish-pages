@@ -41,7 +41,7 @@
         <div id="main-section" class="mx-auto max-w-screen-2xl w-full mt-[3.5rem] md:grid md:grid-cols-[minmax(250px,2fr)_6fr]">
             
             <!-- 左导航栏 -->
-            <div id="aside-nav" class="hidden fixed top-0 w-3/4 max-w-xs px-4 z-20 overscroll-contain border-r overflow-y-auto h-screen md:h-[calc(100vh-3rem)] md:w-full md:max-w-none md:top-[3.5rem] md:sticky md:block">
+            <div id="aside-nav" class="hidden fixed top-0 w-3/4 max-w-xs px-4 z-20 overscroll-contain border-r overflow-y-auto h-screen md:h-[calc(100vh-var(--app-header-height))] md:w-full md:max-w-none md:top-[3.5rem] md:sticky md:block">
 
                 <div class="drawer-body space-y-4">
                     <div class="md:hidden space-y-1.5 border-b pb-3">
@@ -74,7 +74,7 @@
                     {% include "_daobox/footer.html" %}
                 </div>
 
-                <div class="hidden lg:block sticky top-[3.5rem] overflow-y-scroll w-full overscroll-contain" style="height:calc(100vh - 3rem);"">
+                <div class="hidden lg:block sticky top-[3.5rem] overflow-y-auto w-full overscroll-contain" style="height:calc(100vh - var(--app-header-height));"">
                     <div class="my-4">
                         {{article_toc_blocks::mount_holder()}}
 
