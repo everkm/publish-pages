@@ -29,7 +29,9 @@
     <div class="body-container">
 
         {% block header %}
-        {{common_blocks::app_header(with_menu=false)}}
+        <div class="h-[3.5rem] border-b border-b-transparent flex items-center">
+            {{common_blocks::app_header(with_menu=false)}}
+        </div>
         {% endblock header %}
 
         {% block body %}{% endblock body %}

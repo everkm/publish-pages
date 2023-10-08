@@ -9,7 +9,7 @@ tag:
 # @VITE_RELEASE=prod ~/.cargo/bin/daobox-publish serve \
 
 serve:
-	@VITE_RELEASE=prod RUST_BACKTRACE=0 DAOBOX_LOG=info,daobox_publish=debug \
+	@VITE_RELEASE=prod RUST_BACKTRACE=0 DAOBOX_LOG=info,daobox_publish=debug,tpls=debug \
 		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
 		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
 		DAOBOX_SITE_ASSETS=http://192.168.31.239:9070 \
@@ -26,7 +26,7 @@ work:
 
 export-all:
 	@DAOBOX_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
-		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
+		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.0 \
 		./node_modules/.bin/daobox-publish serve \
 		--dev-dir ./ \
 		--export
