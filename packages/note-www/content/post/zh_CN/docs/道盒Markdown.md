@@ -468,14 +468,14 @@ emoji表情符号
 :+1: :point_right: 查找emoji[表情](https://github-emoji-picker.rickstaa.dev/) :smile: :muscle: 。
 
 
-# 四、定义
+# 定义
 
 属性集
 
 :   使用花括号包裹的属性集合，多个属性之间用空格或逗号隔开。
 
 
-# 五、参考
+# 参考
 
 
 
