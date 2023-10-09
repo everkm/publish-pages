@@ -12,7 +12,7 @@ win.daobox.site.setupDrawerToggle('#aside-nav', '#drawer')
   const updateNavActive = await win.daobox.site.buildNavTree('.nav-tree', -1)
   const updateToc = await win.daobox.site.setupToc('.js-toc-content', '#js-toc')
 
-  win.daoboxAjaxUpdateFn = (doc: Document) => {
+  const onAjaxLoaded = (doc: Document) => {
     const titleElement = doc.querySelector('title')
 
     globalThis.document.title = titleElement?.textContent?.trim() || ''
@@ -27,5 +27,9 @@ win.daobox.site.setupDrawerToggle('#aside-nav', '#drawer')
 
     ;(win.Prism as any)?.highlightAll()
   }
-  win.daobox.site.setupLinkAjax()
+
+  const ajaxPath = (globalThis.window as any).daoboxAjaxPathSeg || ''
+  if (ajaxPath){
+    win.daobox.site.setupLinkAjax(ajaxPath, onAjaxLoaded)
+  }
 })()
