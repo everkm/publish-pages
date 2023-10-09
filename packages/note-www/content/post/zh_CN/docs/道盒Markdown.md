@@ -13,7 +13,7 @@ slug: daobox-markdown
 道盒在标准Markdown和GitHub Markdown的基础上，增加了一些常用功能，丰富Markdown的使用场景。
 
 
-# 一、Markdown标准语法
+# Markdown标准语法
 
 来自：<https://daringfireball.net/projects/markdown/syntax>
 
@@ -149,7 +149,7 @@ console.log('代码块+语法高亮')
 ```
 
 
-# 二、Github Markdown扩展语法
+# Github Markdown扩展语法
 
 来自：<https://github.github.com/gfm/>
 
@@ -219,7 +219,7 @@ Orange
 
 
 
-# 三、道盒Markdown扩展
+# 道盒Markdown扩展
 
 
 {#daobox-macro}

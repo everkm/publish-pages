@@ -10,7 +10,7 @@
       {% set doc = post_detail(path="/古文观止/_nav.md") %}
       {{doc.content_html | safe}}
     </div>
-    <div class="flex-1 prose max-w-none">
+    <div class="flex-1 markdown-body max-w-none">
         
       {% set doc = post_detail(path=__qs | get(key="path", default="/古文观止/师说.md")) %}
       <h1>{{doc.title}}</h1>

@@ -1,10 +1,10 @@
 {% import "_daobox/common_blocks.html" as common_blocks %}
-{% set site = ds(src="my_site.toml") %}
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>{{site.name}}</title>
+    <title>{% block page_title %}{% endblock page_title %}{{t(text="site name")}}</title>
     <meta name="description" content="{%block page_description%}{%endblock page_description%}" />
     <meta name="keywords" content="{%block page_keywords%}{%endblock page_keywords%}" />
     {% block meta %}
@@ -27,9 +27,10 @@
 
 <body>
     <div class="body-container">
-
         {% block header %}
-        {{common_blocks::app_header(with_menu=false)}}
+        <div class="h-[3.5rem] border-b border-b-transparent flex items-center">
+            {{common_blocks::app_header(with_menu=false)}}
+        </div>
         {% endblock header %}
 
         {% block body %}{% endblock body %}

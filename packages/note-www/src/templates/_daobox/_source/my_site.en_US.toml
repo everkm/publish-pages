@@ -1,0 +1,17 @@
+# 版权公司
+owner_corp = "Everkm"
+
+# 备案号
+beian = ""
+
+[[bottom_nav]]
+title = "Home"
+url = "https://www.daobox.cn"
+
+[[bottom_nav]]
+title = "Publish"
+url = "https://publish.daobox.cn"
+
+[[bottom_nav]]
+title = "Note"
+url = "https://note.daobox.cn"

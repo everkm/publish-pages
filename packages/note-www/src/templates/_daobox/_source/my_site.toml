@@ -1,6 +1,3 @@
-name = "道盒笔记"
-slogan = "写我们的故事"
-
 # 版权公司
 owner_corp = "毓知信息"
 
@@ -18,3 +15,7 @@ url = "https://publish.daobox.cn"
 [[bottom_nav]]
 title = "道盒笔记"
 url = "https://note.daobox.cn"
+
+[[main_nav]]
+title = "道盒Markdown"
+url = "/docs/daobox-markdown.html?__#段落"

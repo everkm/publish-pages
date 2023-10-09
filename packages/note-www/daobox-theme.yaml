@@ -7,4 +7,6 @@ context:
   - location:
       - /docs/
     qs:
-      __tpl: /details2.html
+      __tpl: /details.html
+      no_dir: true
+      no_time: true

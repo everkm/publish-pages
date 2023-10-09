@@ -11,9 +11,8 @@ tag:
 serve:
 	@RUST_BACKTRACE=0 DAOBOX_LOG=info \
 		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
-		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
+		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
 		DAOBOX_LANG=zh_CN \
-		DAOBOX_LANG=en_US \
 		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
@@ -21,7 +20,7 @@ serve:
 work:
 	@RUST_BACKTRACE=0 DAOBOX_LOG=info \
 		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
-		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
+		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
 		DAOBOX_LANG=zh_CN \
 		DAOBOX_LANG=en_US \
 		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
@@ -30,9 +29,9 @@ work:
 
 export-all:
 	@DAOBOX_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
-		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.0.2 \
+		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
 		DAOBOX_LANG=zh_CN \
-		./node_modules/.bin/daobox-publish serve \
+		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
 		--dev-dir ./ \
 		--export
 

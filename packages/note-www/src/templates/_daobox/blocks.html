@@ -4,7 +4,7 @@
     <div class="text-gray-500">
         {% for nav in navs %}
         {% if loop.index0 %} &raquo; {% endif %}
-        {% if nav.link %}<a href="{{nav.link|safe}}">{% endif %}
+        {% if nav.link %}<a href="{{base_url()}}{{nav.link|safe}}">{% endif %}
             {{nav.name}}
             {% if nav.link %} </a> {% endif %}
         {% endfor %}
@@ -24,11 +24,11 @@ return s ? s+'位' : ''
 
 return arr[4].replace(/^\S/,function(s){return s.toUpperCase()})
 }
-main(name)
+main(args.name)
 ` %}
 <div class="flex items-center">
     <div class="flex-shrink-0 pr-8 h-full">
-        <div class="bg-blue-600 h-full text-white rounded px-3 py-1">{{script(cpu_js, name=file.name)}}</div>
+        <div class="bg-blue-600 h-full text-white rounded px-3 py-1">{{script(content=cpu_js, name=file.name)}}</div>
     </div>
     <div class="overflow-hidden">
         <div class="">
@@ -45,15 +45,15 @@ main(name)
 
 
 {% macro download_card(platform, channel) %}
-{% set meta = ds("https://assets.daobox.cc/daobox-app/" ~ platform ~ "/" ~ channel ~ "/latest.yaml") %}
+{% set meta = ds(src="https://assets.daobox.cc/daobox-app/" ~ platform ~ "/" ~ channel ~ "/latest.yaml") %}
 <div class=" max-w-md">
     <div class="flex justify-between items-end mb-1">
         <div class="text-gray-800 text-xl font-semibold">
             {{meta.version}}
             {% if channel == "stable" %}
-            <span class="text-green-700 text-sm">(正式版)</span>
+            <span class="text-green-700 text-sm">({{t(text="version stable")}})</span>
             {% else %}
-            <span class="text-orange-500 text-sm">(测试版)</span>
+            <span class="text-orange-500 text-sm">({{t(text="version beta")}})</span>
             {% endif %}
         </div>
         <div class="text-gray-500">{{ meta.releaseDate | date(format="%Y-%m-%d %H:%M", timezone="Asia/Shanghai") }}
@@ -76,13 +76,13 @@ main(name)
     <td class="py-1.5 text-sm text-center">{{file.os}}</td>
     <td class="py-1.5 text-sm text-center">{{file.arch}}</td>
     <td class="py-1.5 text-sm text-center">{{file.file_size | filesizeformat}}</td>
-    <td class="py-1.5 "><input type="text" value="{{file.sha256}}" class="w-full text-xs px-2 py-1" disabled /></td>
+    <td class="py-1.5 pr-2"><input type="text" value="{{file.sha256}}" class="w-full text-xs px-0 py-1 bg-white" disabled /></td>
 </tr>
 {% endmacro download_file_item %}
 
 
 {% macro download_channel(prefix, channel) %}
-{% set meta = ds(prefix ~ channel ~ "/dist.json") %}
+{% set meta = ds(src=prefix ~ channel ~ "/dist.json") %}
 <div class="versions-tab-container block-container invisible">
     {% if meta.versions %}
     {% for vi in meta.versions %}
@@ -92,11 +92,11 @@ main(name)
 
     <table class="w-full {%if loop.index0 > 0%}hidden{%endif%}">
         <thead class="font-bold text-lg">
-            <th class="py-1 text-left pl-8">文件名</a></th>
-            <th class="py-1 ">系统</th>
-            <th class="py-1 ">CPU架构</th>
-            <th class="py-1 ">文件大小</th>
-            <th class="py-1 ">Sha256指纹</th>
+            <th class="py-1 text-left pl-8">{{t(text="download meta name")}}</a></th>
+            <th class="py-1 ">{{t(text="download meta os")}}</th>
+            <th class="py-1 ">{{t(text="download meta cpu")}}</th>
+            <th class="py-1 ">{{t(text="download meta capacity")}}</th>
+            <th class="py-1 ">{{t(text="download meta sha256")}}</th>
         </thead>
 
         {% for item in vi.items %}
@@ -105,7 +105,7 @@ main(name)
     </table>
     {% endfor %}
     {% else %}
-    <div class="text-3xl mt-20 text-center text-gray-300">暂无可用版本</div>
+    <div class="text-3xl mt-20 text-center text-gray-300">{{t(text="no available download")}}</div>
     {% endif %}
 </div>
 {% endmacro download_channel %}

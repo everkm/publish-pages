@@ -1,21 +1,19 @@
 {% import "_daobox/widgets/drawer_aside.html" as drawer_blocks %}
 
 {% macro app_header(with_menu=false) %}
-{% set site = ds(src="my_site.toml") %}
-<div class="flex justify-between items-center px-4 py-3 md:px-8">
+<div class="flex-1 flex justify-between items-center px-4 py-2 lg:px-8">
     <div class="flex items-center">
         <a href="{{base_url()}}/">
-            <img src="@/assets/img/logo-m@2x.png" class="inline-block mr-2 w-8 h-8 font-medium" alt="{{site.name}}" />
+            <img src="@/assets/img/logo-m@2x.png" class="inline-block mr-2 w-8 h-8 font-medium" alt="{{t(text="site name")}}" />
         </a>
 
         <div>
-            <span class="text-lg font-medium">{{site.name}}</span>
-            <span class="hidden lg:inline-block  text-gray-600 text-xs">{{site.slogan}}</span>
+            <span class="text-lg font-medium">{{t(text="site name")}}</span>
+            <span class="hidden lg:inline-block  text-gray-600 text-xs">{{t(text="site slogan")}}</span>
         </div>
     </div>
     <div class="hidden md:flex space-x-2">
-        <!-- <a href2="{{base_url()}}/download.html" class="link inline-block">下载</a> -->
-        <!-- <a href="{{base_url()}}/docs/" class="link inline-block">文档</a> -->
+        {{self::first_nav()}}
     </div>
 
     {% if with_menu %}
@@ -24,3 +22,11 @@
     
 </div>
 {% endmacro app_header %}
+
+
+{% macro first_nav() %}
+{% set site = ds(src="my_site.toml") %}
+{% for nav in site.main_nav %}
+<div><a href="{{nav.url|safe}}" class="link inline-block">{{nav.title}}</a></div>
+{% endfor %}
+{% endmacro %}
