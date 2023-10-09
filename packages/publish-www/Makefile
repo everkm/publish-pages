@@ -58,6 +58,6 @@ web:
 	@./node_modules/.bin/daobox-publish web \
 		--work-dir dist
 
-daobox-assets-server:
+assets-web:
 	@./node_modules/.bin/daobox-publish web \
 		--work-dir ~/Coder/www.daobox.cn/packages/daobox-assets/dist --listen 0.0.0.0:9070
