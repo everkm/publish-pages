@@ -23,7 +23,7 @@ date: 2023-10-09 14:26
 
 **新增**
 
-- 当前页在导航树中的前后位置 [`nav_indicator`](内置函数#nav_indicator)
+- 当前页在导航树中的前后项 [`nav_indicator`](内置函数#nav_indicator)
 
 ## v0.8.1 (2023-10-05)
 
