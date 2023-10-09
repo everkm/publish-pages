@@ -1,6 +1,10 @@
 {% extends "_daobox/layout.html" %}
 {% import "_daobox/blocks.html" as blocks %}
 
+{% block page_title -%}
+{% set doc = post_meta(id=__qs | get(key="id", default=""), path=__qs | get(key="path", default="")) %}
+{{doc.title ~ " | " -}}
+{%- endblock page_title %}
 
 {% block body %}
 <div class="mx-auto max-w-screen-md mb-10 markdown-body px-4 lg:px-8 pt-3">
