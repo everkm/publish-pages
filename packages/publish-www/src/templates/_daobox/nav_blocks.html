@@ -19,9 +19,8 @@
 
 {% macro page_indicator(nav) %}
 <div class="page-indicator space-y-4 md:flex md:flex-row-reverse md:items-center md:space-y-0 md:gap-8">
-
     {% if nav.next %}
-    <a class="flex-1 block" href="{{nav.next.link}}">
+    <a class="flex-1 block" href="{{nav.next.link|safe}}">
     <div class="border rounded p-4 flex flex-col items-end">
         <div class="inline-block text-black/60">
             {{self::arrow_right()}}
@@ -32,7 +31,7 @@
     {% endif %}
 
     {% if nav.prev %}
-    <a class="flex-1 block" href="{{nav.prev.link}}">
+    <a class="flex-1 block" href="{{nav.prev.link|safe}}">
     <div class="border rounded p-4 flex flex-col items-start">
         <div class="inline-block text-black/60">
             {{self::arrow_left()}}

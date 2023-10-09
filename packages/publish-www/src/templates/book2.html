@@ -51,12 +51,6 @@
                     
                     {% set nav_doc = post_detail(path=__qs.nav) %}
                     {{drawer_blocks::drawer_aside(body=nav_doc.content_html)}}
-
-                    <!-- <div class="">
-                        {% for i in range(end=50) %}
-                        <p>toc {{i}}</p>
-                        {% endfor %}
-                    </div> -->
                 </div>
             </div>
 
@@ -83,10 +77,6 @@
                 <div class="hidden lg:block sticky top-[3.5rem] overflow-y-auto w-full overscroll-contain" style="height:calc(100vh - var(--app-header-height));"">
                     <div class="my-4">
                         {{article_toc_blocks::mount_holder()}}
-
-                        <!-- {% for i in range(end=50) %}
-                        <p>toc {{i}}</p>
-                        {% endfor %} -->
                     </div>
                 </div>
             </div>

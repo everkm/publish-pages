@@ -31,6 +31,13 @@ export-all:
 		--dev-dir ./ \
 		--export
 
+export-all-debug:
+	@DAOBOX_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
+		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
+		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
+		--dev-dir ./ \
+		--export
+
 package-theme:
 	@RUST_BACKTRACE=1 \
 		DAOBOX_LOG=info,img_assets=info \
@@ -44,6 +51,8 @@ fe-build:
 	pnpm run build
 
 dist: fe-build export-all copy-daobox-assets 
+
+dist-debug: fe-build export-all-debug copy-daobox-assets 
 
 dist-theme: fe-build package-theme
 	@if [ ! -d theme/dev ]; then mkdir -p theme/dev; fi
