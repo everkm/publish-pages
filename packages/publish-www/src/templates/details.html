@@ -13,8 +13,8 @@
 
   <h1>{{doc.title}}</h1>
   <p>
-    时间：<span>{{doc.date | date(format="%Y-%m-%d %H:%M:%S")}}</span><br/>
-    目录：<span>{{doc.dir}}</span><br/>
+    {% if not __qs | get(key="no_time", default=false) %}时间：<span>{{doc.date | date(format="%Y-%m-%d %H:%M")}}</span><br/>{% endif %}
+    {% if not __qs | get(key="no_dir", default=false) %}目录：<span>{{doc.dir}}</span><br/>{% endif %}
   </p>
   <div class="">
     {{doc.content_html | safe}}

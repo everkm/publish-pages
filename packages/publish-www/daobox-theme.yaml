@@ -15,13 +15,9 @@ context:
     qs:
       path: /docs/基础介绍.md
   - location:
-      - /guwenguanzhi/
+      - /changelog.html
     qs:
-      __tpl: /book.html
-      nav: /demo/古文观止/_nav.md
-      ajax: /guwenguanzhi/
-  - location:
-      - /guwenguanzhi/index.html
-    qs:
-      path: /demo/古文观止/师说.md
+      __tpl: /details.html
+      no_dir: true
+      no_time: true
       
