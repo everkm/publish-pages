@@ -2,7 +2,7 @@
 道盒笔记
 
 # site slogan
-毓知信息
+写我们的故事
 
 # channel home
 首页
