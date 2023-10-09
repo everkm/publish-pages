@@ -26,7 +26,7 @@ work:
 
 export-all:
 	@DAOBOX_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
-		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.0 \
+		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.1 \
 		./node_modules/.bin/daobox-publish serve \
 		--dev-dir ./ \
 		--export
