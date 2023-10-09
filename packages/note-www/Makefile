@@ -31,7 +31,7 @@ export-all:
 	@DAOBOX_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
 		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
 		DAOBOX_LANG=zh_CN \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
+		./node_modules/.bin/daobox-publish serve \
 		--dev-dir ./ \
 		--export
 
