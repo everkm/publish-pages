@@ -112,7 +112,7 @@ slug: daobox-markdown
 
 ## 代码
 
-<pre>
+<pre><code class="language-markdown">
 一个反引号包裹的行内代码
 
 `行内代码`
@@ -128,7 +128,7 @@ console.log('代码块+语法高亮')
 没有指明语言，所有没有语法高亮。
 让我们随便写个标签试试 <b>tag</b>
 ```
-</pre>
+</code></pre>
 
 
 ## 水平分割线
@@ -185,7 +185,7 @@ Text prior to footnote reference.[^2]
 
 ## 表格
 
-<pre>
+```markdown
 冒号可以用来对其列，可省略。
 
 | Tables        | Are           | Cool  |
@@ -201,7 +201,7 @@ Markdown | Less | Pretty
 --- | --- | ---
 *Still* | `renders` | **nicely**
 1 | 2 | 3
-</pre>
+```
 
 
 ## 定义列表 （Definition Lists）

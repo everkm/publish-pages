@@ -36,7 +36,6 @@ work:
 		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
 		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
 		DAOBOX_LANG=zh_CN \
-		DAOBOX_LANG=en_US \
 		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
 		--work-dir ./ \
 		--listen=0.0.0.0:9081
