@@ -4,7 +4,7 @@
 
 {% block page_title -%}
 {% set doc = post_meta(id=__qs | get(key="id", default=""), path=__qs | get(key="path", default="")) %}
-{{doc.title -}}
+{{doc.title ~ " | " -}}
 {%- endblock page_title %}
 
 {% block body %}
