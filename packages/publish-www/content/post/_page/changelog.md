@@ -13,10 +13,10 @@ update_time: 2023-10-23 08:47
 
 **新增**
 
-- 函数(ds)[内置函数#ds]缓存功能。
-- 函数(post_detail)[内置函数#post_detail]内容标签过滤。
-- 函数(post_meta)[内置函数#post_meta]返回`slug`属性。
-- 函数(oops)[内置函数#oops]。
+- 函数[`ds`](内置函数#ds)缓存功能。
+- 函数[`post_detail`](内置函数#post_detail)内容标签过滤。
+- 函数[`post_meta`](内置函数#post_meta)返回`slug`属性。
+- 函数[`oops`](内置函数#oops)。
 
 **修复**
 
