@@ -2,7 +2,9 @@
 id,ID,字符串,,常用于参数传递。
 title,标题,字符串,,
 meta,元属性,对象,✔️,Markdown文件的FrontMatter，除本表格列举的键名外，其余作为meta的子属性。
-dir,目录,字符串,,
+dir,目录,字符串,两端有<code>/</code>,
+path,文件路径,字符串,,
+slug,文件Slug,字符串,meta的子属性，默认为标题URL编码,
 summary,摘要,字符串,,
 date,创建时间,时间字符串,,
 update_time,更新时间,时间字符串,✔️,
