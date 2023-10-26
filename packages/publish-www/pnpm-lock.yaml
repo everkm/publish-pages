@@ -80,8 +80,8 @@ devDependencies:
     specifier: ^5.0.1
     version: 5.0.1(webpack@5.88.2)
   daobox-publish:
-    specifier: ^0.9.0
-    version: 0.9.0
+    specifier: ^0.9.1
+    version: 0.9.1
   dotenv:
     specifier: ^16.3.1
     version: 16.3.1
@@ -2815,8 +2815,8 @@ packages:
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
-  /daobox-publish@0.9.0:
-    resolution: {integrity: sha512-EbNIQhzI3bwsbpXGBCLzBXhACz5xmAHFuUx/FQHvr1LGhS9hLQ8fJHEmYtzAP624HcYQfZXdHhvvrElum/1v1Q==}
+  /daobox-publish@0.9.1:
+    resolution: {integrity: sha512-ALhv7PTvbm3Pk3u+2i7sqa5ojcXzpAGc+UPsXkC+E9zAkWH2NxqmJ8m+dcDXe4vKsI4q0s9UBnplyrI4jfckLg==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
