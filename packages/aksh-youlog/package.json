@@ -36,7 +36,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
-    "daobox-publish": "^0.7.3",
+    "daobox-publish": "^0.9.1",
     "dotenv": "^16.3.1",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.48.0",
