@@ -1,0 +1,17 @@
+{% extends "_daobox/layout.html" %}
+
+{% block body %}
+{% set doc = post_detail(id=__qs | get(key="id", default=""), path=__qs | get(key="path", default="")) %}
+<div class="block-container space-y-8">
+  <h1 class="text-xl font-bold mt-6 my-font-color">
+    <a href="/">{{__cfg.site.name}}</a>
+  </h1>
+  
+  <div class="space-y-3">
+    <h2 class="text-4xl font-semibold">{{doc.title}}</h2>
+    <div class="text-gray-600">{{doc.date | date(format="%Y-%m-%d %H:%M")}}</div>
+  </div>
+  <div class="yb-content2">{{doc.content_html | safe}}</div>
+  
+</div>
+{% endblock body %}
