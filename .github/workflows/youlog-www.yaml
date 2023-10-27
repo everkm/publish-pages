@@ -1,9 +1,9 @@
-name: everkm-www Release
+name: youlog-www Release
 
 on:
   push:
     tags:
-      - "everkm-www@v*" # Push events to matching v*, i.e. v1.0, v20.15.10
+      - "youlog-www@v*" # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -48,7 +48,7 @@ jobs:
     - name: dist
       run: |
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > id_rsa_daobox
-        cd packages/everkm-www && pnpm i && make dist
+        cd packages/youlog-www && pnpm i && make dist
 
     - uses: addnab/docker-run-action@v3
       with:
@@ -67,8 +67,8 @@ jobs:
             --links \
             --delete-after \
             --exclude=*.sh \
-            packages/everkm-www/dist/ \
-            root@y5.liveio.cn:/data/www/everkm-www/
+            packages/youlog-www/dist/ \
+            root@y5.liveio.cn:/data/www/youlog-www/
 
 
     # - name: Create Release
