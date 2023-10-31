@@ -16,7 +16,7 @@ update_time: 2023-10-31 09:13
 - 禁止跟进链接格式 `?...`
 - dcard 格式 `yaml dcard/items`
 - 目录默认页
-- 函数[`post_breadcrumb`](内置过滤器#post_breadcrumb) 获取面包屑数据
+- 函数[`post_breadcrumb`](内置函数#post_breadcrumb) 获取面包屑数据
 
 **修复**
 
