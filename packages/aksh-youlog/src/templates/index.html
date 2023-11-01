@@ -10,7 +10,7 @@
     {% set page_no =__qs.page | default(value=1) | int %}
     {% set start = (page_no - 1) * 5 %}
     {% set end = start + 5 %}
-    {% set items = posts(dir="/", recursive=true) %}
+    {% set items = posts(dir="/列表", recursive=true) %}
     {% set page_count = script(content="Math.ceil(args.val)", val = items | length / 5 ) %}
 
     {% if page_no < 2 and post_exist(path="/_page/home.md") %}
@@ -23,7 +23,7 @@
     {% for doc in items | slice(start=start, end=end) %}
     <div class="space-y-2">
         <h2 class="text-2xl">
-            <a class="text-[#005b99] font-medium" href="{{base_url()}}/posts/{{doc.date | date(format="%Y/%m") | safe}}/{{ doc.meta | get(key="slug", default = doc.title | slugify) }}.html?id={{doc.id}}&__tpl={{"detail.html"|urlencode_strict}}" target="_blank">
+            <a class="text-[#005b99] font-medium" href="{{doc.url_path | safe}}?path={{doc.path | urlencode_strict}}&__tpl={{"detail.html"|urlencode_strict}}" target="_blank">
             {{doc.title}}
             </a>
             {%if doc.weight > 0%}<span class="!text-red-500 mark-top"></span>{%endif%}
@@ -32,7 +32,7 @@
     </div>
     {% endfor %}
 
-    {% if page_count > 0 %}
+    {% if page_count > 1 %}
     <div class="space-x-6 flex !mt-10">
         {% if page_no > 1 %}
         <div class="flex items-center space-x-1">
