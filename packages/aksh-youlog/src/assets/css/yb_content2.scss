@@ -311,15 +311,19 @@
 
   
   
-  
+.imgs{
+  @apply text-center;
+  img {
+    @apply inline-block;
+  }
+}
 
   
   
   
 
   
-  
-  
+
 
   
   
