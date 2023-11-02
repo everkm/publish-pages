@@ -59,7 +59,7 @@ dist-theme: fe-build package-theme
 
 copy-daobox-assets:
 	@if [ ! -d dist/assets ]; then mkdir -p dist/assets; fi
-	@cp -r public/daobox-assets dist/assets/
+	@if [ -d public/daobox-assets ]; then @cp -r public/daobox-assets dist/assets/; fi
 
 
 web:
