@@ -20,16 +20,22 @@
         </div>
     {% endif %}
 
+
+    {% set dt = "" %}
     {% for doc in items | slice(start=start, end=end) %}
-    <div class="space-y-2">
-        <h2 class="text-2xl">
-            <a class="text-[#005b99] font-medium" href="{{doc.url_path | safe}}?path={{doc.path|urlencode_strict}}&__tpl={{"detail.html"|urlencode_strict}}" target="_blank">
-            {{doc.title}}
-            </a>
-            {%if doc.weight > 0%}<span class="!text-red-500 mark-top"></span>{%endif%}
-        </h2>
-        <div class="text-[#2f353e] font-light text-[90%] number">{{doc.date | date(format="%Y-%m-%d")}}</div>
-    </div>
+        {% set cur_dt = doc.date | date(format="%Y-%m-%d") %}
+        {% if dt != cur_dt %}
+            {% set_global dt = cur_dt %}
+            <div class="text-[#2f353e] font-semibold text-[95%] number">{{dt}}</div>
+        {% endif %}
+    
+        <div class="space-y-2 pl-[2em]">
+            <h2 class="text-2xl">
+                <a class="text-[#005b99] font-medium" href="{{doc.url_path | safe}}?path={{doc.path|urlencode_strict}}&__tpl={{"detail.html"|urlencode_strict}}" target="_blank">
+                {{doc.title}}
+                </a>
+            </h2>
+        </div>
     {% endfor %}
 
     {% if page_count > 1 %}
