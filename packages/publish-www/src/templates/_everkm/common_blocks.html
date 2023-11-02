@@ -1,4 +1,4 @@
-{% import "_daobox/widgets/drawer_aside.html" as drawer_blocks %}
+{% import "_everkm/widgets/drawer_aside.html" as drawer_blocks %}
 
 {% macro app_header(with_menu=false) %}
 <div class="flex-1 flex justify-between items-center px-4 py-2 lg:px-8">
@@ -25,8 +25,7 @@
 
 
 {% macro first_nav() %}
-{% set site = ds(src="my_site.toml") %}
-{% for nav in site.main_nav %}
-<div><a href="{{nav.url|safe}}" class="link inline-block">{{nav.title}}</a></div>
-{% endfor %}
+<div><a href="{{base_url()}}/download.html" class="link inline-block">{{t(text="channel download")}}</a></div>
+<div><a href="{{base_url()}}/docs/" class="link inline-block">{{t(text="channel docs")}}</a></div>
+<div><a href="{{base_url()}}/changelog.html?path=/_page/changelog.md" class="link inline-block">{{t(text="channel changelog")}}</a></div>
 {% endmacro %}

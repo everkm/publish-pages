@@ -6,52 +6,52 @@ tag:
 	fi
 
 
-# @~/.cargo/bin/daobox-publish serve \
+# @~/.cargo/bin/everkm-publish serve \
 
 
 define publish_bin
 	if [ "$(DEBUG)" == "1" ]; then
-		echo "/Users/dayu/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish"; 
+		echo "/Users/dayu/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish"; 
 	else 
-		echo "./node_modules/.bin/daobox-publish"; 
+		echo "./node_modules/.bin/everkm-publish"; 
 	fi
 endef
 
 
-pick-daobox-publish:
-	$(eval DAOBOX_PUBLISH_BIN:="$(shell $(call publish_bin))")
-	@echo "use daobox bin: $(DAOBOX_PUBLISH_BIN)"
+pick-everkm-publish:
+	$(eval EVERKM_PUBLISH_BIN:="$(shell $(call publish_bin))")
+	@echo "use daobox bin: $(EVERKM_PUBLISH_BIN)"
 
 serve:
-	@RUST_BACKTRACE=0 DAOBOX_LOG=info \
-		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
-		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
-		DAOBOX_LANG=zh_CN \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
+	@RUST_BACKTRACE=0 EVERKM_LOG=info \
+		EVERKM_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
+		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
+		EVERKM_LANG=zh_CN \
+		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish serve \
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
 
 work:
-	@RUST_BACKTRACE=0 DAOBOX_LOG=info \
-		DAOBOX_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
-		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
-		DAOBOX_LANG=zh_CN \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish serve \
+	@RUST_BACKTRACE=0 EVERKM_LOG=info \
+		EVERKM_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
+		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
+		EVERKM_LANG=zh_CN \
+		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish serve \
 		--work-dir ./ \
 		--listen=0.0.0.0:9081
 
-export-all: pick-daobox-publish
-	@DAOBOX_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
-		DAOBOX_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
-		DAOBOX_LANG=zh_CN \
-		$(DAOBOX_PUBLISH_BIN) serve \
+export-all: pick-everkm-publish
+	@EVERKM_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
+		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
+		EVERKM_LANG=zh_CN \
+		$(EVERKM_PUBLISH_BIN) serve \
 		--dev-dir ./ \
 		--export
 
 package-theme:
 	@RUST_BACKTRACE=1 \
-		DAOBOX_LOG=info,img_assets=info \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-publish package-theme \
+		EVERKM_LOG=info,img_assets=info \
+		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish package-theme \
 		--dev-dir ./ 
 
 fe-dev:
@@ -72,9 +72,9 @@ copy-daobox-assets:
 
 
 web:
-	@./node_modules/.bin/daobox-publish web \
+	@./node_modules/.bin/everkm-publish web \
 		--work-dir dist
 
 daobox-assets-server:
-	@./node_modules/.bin/daobox-publish web \
+	@./node_modules/.bin/everkm-publish web \
 		--work-dir public --listen 0.0.0.0:9082

@@ -1,6 +1,6 @@
-{% import "_daobox/common_blocks.html" as common_blocks %}
-{% import "_daobox/widgets/drawer_aside.html" as drawer_blocks %}
-{% import "_daobox/widgets/article_toc.html" as article_toc_blocks %}
+{% import "_everkm/common_blocks.html" as common_blocks %}
+{% import "_everkm/widgets/drawer_aside.html" as drawer_blocks %}
+{% import "_everkm/widgets/article_toc.html" as article_toc_blocks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +70,7 @@
 
                         </div>
 
-                        {% include "_daobox/footer.html" %}
+                        {% include "_everkm/footer.html" %}
                     </div>
 
                     <!-- 边栏 toc  -->
@@ -94,7 +94,7 @@
     </script>
     <script src="{{get_env(name="DAOBOX_SITE_ASSETS")|safe}}/assets/daobox.js"></script>
     {{assets(type="js", section="book")}}
-    {% include "_daobox/prism.html" %}
+    {% include "_everkm/prism.html" %}
 </body>
 
 </html>

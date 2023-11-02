@@ -1,7 +1,7 @@
-{% import "_daobox/common_blocks.html" as common_blocks %}
-{% import "_daobox/nav_blocks.html" as nav_blocks %}
-{% import "_daobox/widgets/drawer_aside.html" as drawer_blocks %}
-{% import "_daobox/widgets/article_toc.html" as article_toc_blocks %}
+{% import "_everkm/common_blocks.html" as common_blocks %}
+{% import "_everkm/nav_blocks.html" as nav_blocks %}
+{% import "_everkm/widgets/drawer_aside.html" as drawer_blocks %}
+{% import "_everkm/widgets/article_toc.html" as article_toc_blocks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +71,7 @@
                         {{nav_blocks::page_indicator(nav=nav_meta)}}
                     </div>
 
-                    {% include "_daobox/footer.html" %}
+                    {% include "_everkm/footer.html" %}
                 </div>
 
                 <div class="hidden lg:block sticky top-[3.5rem] overflow-y-auto w-full overscroll-contain" style="height:calc(100vh - var(--app-header-height));"">
@@ -91,7 +91,7 @@
     </script>
     <script src="{{get_env(name="DAOBOX_SITE_ASSETS")|safe}}/assets/daobox.js"></script>
     {{assets(type="js", section="book")}}
-    {% include "_daobox/prism.html" %}
+    {% include "_everkm/prism.html" %}
 </body>
 
 </html>
