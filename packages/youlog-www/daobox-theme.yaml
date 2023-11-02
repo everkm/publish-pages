@@ -2,3 +2,10 @@ name: yilog
 author: dayu<dayu@dayu.me>
 repository: https://github.com/daobox-site-theme/yilog
 demo: https://yilog.theme.daobox.cc/
+
+context:
+  - location:
+      - /haowen
+    qs:
+      __tpl: /detail.html
+      
