@@ -1,9 +1,9 @@
-name: daobox-www Release
+name: everkm-www Release
 
 on:
   push:
     tags:
-      - "daobox-www@v*" # Push events to matching v*, i.e. v1.0, v20.15.10
+      - "everkm-www@v*" # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -48,7 +48,7 @@ jobs:
     - name: dist
       run: |
         echo "${{ secrets.SSH_PRIVATE_KEY_LOCAL }}" > id_rsa_daobox
-        cd packages/daobox-www && pnpm i && make dist
+        cd packages/everkm-www && pnpm i && make dist
 
     - uses: addnab/docker-run-action@v3
       with:
@@ -67,8 +67,8 @@ jobs:
             --links \
             --delete-after \
             --exclude=*.sh \
-            packages/daobox-www/dist/ \
-            root@y5.liveio.cn:/data/www/daobox-www/
+            packages/everkm-www/dist/ \
+            root@y5.everkm.cn:/data/www/everkm-www/
 
 
     # - name: Create Release

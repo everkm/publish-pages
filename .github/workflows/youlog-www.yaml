@@ -68,7 +68,7 @@ jobs:
             --delete-after \
             --exclude=*.sh \
             packages/youlog-www/dist/ \
-            root@y5.liveio.cn:/data/www/youlog-www/
+            root@y5.everkm.cn:/data/www/youlog-www/
 
 
     # - name: Create Release

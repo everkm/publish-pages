@@ -68,7 +68,7 @@ jobs:
             --delete-after \
             --exclude=*.sh \
             packages/publish-www/dist/ \
-            root@y5.liveio.cn:/data/www/publish-www/
+            root@y5.everkm.cn:/data/www/publish-www/
 
 
     # - name: Create Release

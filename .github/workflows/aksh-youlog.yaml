@@ -68,7 +68,7 @@ jobs:
             --delete-after \
             --exclude=*.sh \
             packages/aksh-youlog/dist/ \
-            root@y5.liveio.cn:/data/www/aksh-youlog/
+            root@y5.everkm.cn:/data/www/aksh-youlog/
 
 
     # - name: Create Release

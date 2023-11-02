@@ -68,7 +68,7 @@ jobs:
             --delete-after \
             --exclude=*.sh \
             packages/note-www/dist/ \
-            root@y5.liveio.cn:/data/www/note-www/
+            root@y5.everkm.cn:/data/www/note-www/
 
 
     # - name: Create Release
