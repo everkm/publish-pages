@@ -5,11 +5,6 @@ update_time: 2023-11-03 11:03
 ---
 
 
-**本页目录**
-
-[TOC]
-
----
 
 道盒在标准Markdown和GitHub Markdown的基础上，增加了一些常用功能，丰富Markdown的使用场景。
 
@@ -223,7 +218,7 @@ Orange
 # 道盒Markdown扩展
 
 
-{#everkm-macro}
+{id=everkm-macro}
 ## 宏 
 
 ### TOC (Table of content)
@@ -305,7 +300,7 @@ Orange
 
 适用于页面内部不同标题之间的跳转。
 
-标题增加`id`属性后会自动生成锚点，如果未指定`id`属性，默认使用标题内容地址化[^slugify]生成锚点，可在链接中使用`#id`实现页内锚点跳转。
+标题会自动生成锚点，可以在通过 `id=identity` 定义ID，默认使用标题内容地址化[^slugify]作为锚点名称，可在链接中使用`#id`实现页内锚点跳转。
 
 
 ## 区块扩展属性
@@ -319,8 +314,8 @@ Orange
 
 **属性集**支持以下属性：
 
-1. `#id` 增加Tag标签，支持中文
-1. `.id` 增加CSS样式名称（class）属性
+1. `#tag` 增加Tag标签，支持中文
+1. `.class` 增加CSS样式名称（class）属性
 1. `color=red` 增加文字颜色
 1. `bgcolor=red` 增加背景颜色
 1. `font=Arial` 字体。

@@ -5,20 +5,17 @@ demo: https://yilog.theme.daobox.cc/
 
 context:
   - location:
-      - /guide/everkm-markdown.html
+      - /guide/
     qs:
-      __tpl: /details.html
-      no_dir: true
+      __tpl: /book2.html
+      nav: /guide/_nav.md
+      ajax: /guide/
   - location:
       - /docs/
     qs:
       __tpl: /book2.html
       nav: /docs/_nav.md
       ajax: /docs/
-  - location:
-      - /docs/index.html
-    qs:
-      path: /docs/基础介绍.md
   - location:
       - /changelog.html
     qs:

@@ -20,7 +20,8 @@ pick-publish:
 	
 serve:
 	@RUST_BACKTRACE=0 EVERKM_LOG=info \
-		EVERKM_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
+		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
+		EVERKM_SITE_ASSETS=//localhost/daobox-assets \
 		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish serve \
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
