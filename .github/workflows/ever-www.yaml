@@ -47,7 +47,7 @@ jobs:
 
     - name: dist
       run: |
-        echo "${{ secrets.SSH_PRIVATE_KEY_LOCAL }}" > id_rsa_daobox
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > id_rsa_daobox
         cd packages/everkm-www && pnpm i && make dist
 
     - uses: addnab/docker-run-action@v3
