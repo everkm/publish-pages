@@ -1,6 +1,7 @@
 ---
-title: Everkm Markdown格式
+title: 道盒Markdown格式
 slug: everkm-markdown
+update_time: 2023-11-03 11:03
 ---
 
 
@@ -281,7 +282,7 @@ Orange
 {{everkm::include(file="_xx.js", as="code", code_lang="js")}}
 ```
 
-{#inner-link}
+{id=inner-link}
 ## 项目内部链接 
 
 适用于项目内的文件跳转。支持非HTML页面链接，如PDF文档等，该文件在输出时自动复制到静态资源目录。
@@ -299,12 +300,12 @@ Orange
 3. 除上述外，均以文件名为后缀，匹配项目中所有文件。
 
 
-{#page-anchor}
+{id=page-anchor}
 ## 页内锚点 
 
 适用于页面内部不同标题之间的跳转。
 
-标题增加`id`属性后会自动生成锚点，如果未指定`id`属性，默认使用`HA-`加上标题内容地址化[^slugify]生成锚点，可在链接中使用`#id`实现页内锚点跳转。
+标题增加`id`属性后会自动生成锚点，如果未指定`id`属性，默认使用标题内容地址化[^slugify]生成锚点，可在链接中使用`#id`实现页内锚点跳转。
 
 
 ## 区块扩展属性
@@ -318,7 +319,7 @@ Orange
 
 **属性集**支持以下属性：
 
-1. `#id` 增加ID属性
+1. `#id` 增加Tag标签，支持中文
 1. `.id` 增加CSS样式名称（class）属性
 1. `color=red` 增加文字颜色
 1. `bgcolor=red` 增加背景颜色
@@ -336,7 +337,7 @@ Orange
 ### 标题
 
 ```markdown
-{#main-header}
+{id=main-header}
 # 主标题
 ```
 

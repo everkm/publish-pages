@@ -1,6 +1,6 @@
 ---
 title: 道盒Markdown格式
-slug: daobox-markdown
+slug: everkm-markdown
 ---
 
 
@@ -80,9 +80,9 @@ slug: daobox-markdown
 ## 链接
 
 ```markdown
-[内嵌式链接](https://note.daobox.cn)
+[内嵌式链接](https://note.everkm.cn)
 
-[带标题的内嵌式链接](https://note.daobox.cn "道盒笔记")
+[带标题的内嵌式链接](https://note.everkm.cn "道盒笔记")
 
 [引用式链接][arbitrary case-insensitive reference text]
 
@@ -90,8 +90,8 @@ slug: daobox-markdown
 
 引用链接的地址可以放在后面。
 
-[link text itself]: https://note.daobox.cn
-[arbitrary case-insensitive reference text]: https://note.daobox.cn
+[link text itself]: https://note.everkm.cn
+[arbitrary case-insensitive reference text]: https://note.everkm.cn
 ```
 
 
@@ -170,7 +170,7 @@ console.log('代码块+语法高亮')
 ## 自动转换链接
 
 ```markdown
-<https://www.daobox.cn>
+<https://www.everkm.cn>
 ```
 
 ## 脚注
@@ -222,7 +222,7 @@ Orange
 # 道盒Markdown扩展
 
 
-{#daobox-macro}
+{#everkm-macro}
 ## 宏 
 
 ### TOC (Table of content)
@@ -232,9 +232,9 @@ Orange
 ```markdown
 [TOC]
 
-{{daobox::toc()}}
+{{everkm::toc()}}
 
-{{daobox::toc(level=1)}}
+{{everkm::toc(level=1)}}
 ```
 
 **参数**：
@@ -263,7 +263,7 @@ Orange
 **包含外部Markdown示例：**
 
 ```markdown
-{{daobox::include(file="_include_test.inc.md", as="md")}}
+{{everkm::include(file="_include_test.inc.md", as="md")}}
 ```
 
 **包含外部表格示例：**
@@ -272,16 +272,16 @@ Orange
 
 ```markdown
 {align=center}
-{{daobox::include(file="demo.csv", as="table", table_header=true, table_merge="*")}}
+{{everkm::include(file="demo.csv", as="table", table_header=true, table_merge="*")}}
 ```
 
 **包含外部代码示例：**
 
 ```markdown
-{{daobox::include(file="_xx.js", as="code", code_lang="js")}}
+{{everkm::include(file="_xx.js", as="code", code_lang="js")}}
 ```
 
-{#inner-link}
+{id=inner-link}
 ## 项目内部链接 
 
 适用于项目内的文件跳转。支持非HTML页面链接，如PDF文档等，该文件在输出时自动复制到静态资源目录。
@@ -299,12 +299,12 @@ Orange
 3. 除上述外，均以文件名为后缀，匹配项目中所有文件。
 
 
-{#page-anchor}
+{id=page-anchor}
 ## 页内锚点 
 
 适用于页面内部不同标题之间的跳转。
 
-标题增加`id`属性后会自动生成锚点，如果未指定`id`属性，默认使用`HA-`加上标题内容地址化[^slugify]生成锚点，可在链接中使用`#id`实现页内锚点跳转。
+标题增加`id`属性后会自动生成锚点，如果未指定`id`属性，默认使用标题内容地址化[^slugify]生成锚点，可在链接中使用`#id`实现页内锚点跳转。
 
 
 ## 区块扩展属性
@@ -318,7 +318,7 @@ Orange
 
 **属性集**支持以下属性：
 
-1. `#id` 增加ID属性
+1. `#id` 增加Tag标签，支持中文
 1. `.id` 增加CSS样式名称（class）属性
 1. `color=red` 增加文字颜色
 1. `bgcolor=red` 增加背景颜色
@@ -336,7 +336,7 @@ Orange
 ### 标题
 
 ```markdown
-{#main-header}
+{id=main-header}
 # 主标题
 ```
 
@@ -378,9 +378,9 @@ Orange
 ### 链接
 
 ```markdown
-hello <https://www.daobox.cn>{target=_blank color=red} world
+hello <https://www.everkm.cn>{target=_blank color=red} world
 
-带有扩展属性的[道盒](https://www.daobox.cn){color=orangered}链接。
+带有扩展属性的[道盒](https://www.everkm.cn){color=orangered}链接。
 ```
 
 ### 图片 
@@ -391,7 +391,7 @@ hello <https://www.daobox.cn>{target=_blank color=red} world
 
 **效果如下**：
 
-带有扩展属性的[道盒](https://www.daobox.cn){color=orangered}链接。
+带有扩展属性的[道盒](https://www.everkm.cn){color=orangered}链接。
 
 ![Air](https://images.unsplash.com/photo-1564979045531-fa386a275b27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2532&q=80 "蓝天与狗尾巴草"){corner=1em}
 
@@ -483,8 +483,8 @@ emoji表情符号
 
 [^gfm]: <https://github.github.com/gfm/>
 
-[道盒发布]: https://publish.daobox.cn
+[道盒发布]: https://publish.everkm.cn
 
 [^slugify]: 将文本转换成有效的链接字符。英文字母数字保持原样，空格替换为`-`，中文每个字符转换拼音后，使用`-`连接。==注:exclamation:==：字母+中文的连接处没有连字符`-`，如果需要请在中间添加英文空格。
 
-[道盒笔记]: https://note.daobox.cn
+[道盒笔记]: https://note.everkm.cn
