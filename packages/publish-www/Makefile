@@ -72,3 +72,8 @@ dist-theme: fe-build package-theme
 copy-daobox-assets:
 	@if [ ! -d dist/assets ]; then mkdir -p dist/assets; fi
 	@if [ -d public/daobox-assets ]; then cp -r public/daobox-assets dist/assets/ ; fi
+
+
+cmd-help-export:
+	@~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish help serve > content/post/guide/_ekm_publish-serve.txt      
+	@~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish help package-theme > content/post/guide/_ekm_publish-package-theme.txt      

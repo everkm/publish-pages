@@ -1,0 +1,69 @@
+预览导出
+
+Usage: everkm-publish serve [OPTIONS]
+
+Options:
+      --work-dir <WORK_DIR>
+          工作目录
+          
+          [env: EVERKM_WORK_DIR=]
+          [default: ./]
+
+      --dev-dir <DEV_DIR>
+          开发根目录
+          
+          优先级高于work目录
+          
+          [env: EVERKM_DEV_DIR=]
+
+      --dist-dir <DIST_DIR>
+          导出目录
+          
+          [env: EVERKM_DIST_DIR=]
+          [default: ./dist/]
+
+      --theme <THEME>
+          主题名称
+          
+          [env: EVERKM_THEME=]
+          [default: dev]
+
+      --cdn-prefix <CDN_PREFIX>
+          静态资源CDN前缀
+          
+          [env: EVERKM_CDN_PREFIX=]
+
+      --lang <LANG>
+          国际化语言代码
+          
+          [env: EVERKM_LANG=]
+
+      --base-prefix <BASE_PREFIX>
+          部署目录前缀
+          
+          [env: EVERKM_BASE_PREFIX=]
+          [default: ]
+
+      --listen <LISTEN>
+          服务监听地址
+          
+          [env: EVERKM_LISTEN=]
+          [default: 127.0.0.1:9081]
+
+  -e, --export
+          导出模式
+
+      --start-urls <START_URLS>
+          导出的入口地址列表。多个用空格分割。
+          
+          默认：/index.html
+          
+          [env: EVERKM_START_URLS=]
+
+      --stop-urls <STOP_URLS>
+          忽略的地址前缀列表。多个用空格分割。
+          
+          [env: EVERKM_STOP_URLS=]
+
+  -h, --help
+          Print help (see a summary with '-h')

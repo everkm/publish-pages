@@ -1,0 +1,8 @@
+打包模板
+
+Usage: everkm-publish package-theme [OPTIONS]
+
+Options:
+      --dev-dir <DEV_DIR>    模板开发目录 [env: EVERKM_DEV_DIR=] [default: ./src/]
+      --dist-dir <DIST_DIR>  发布目录 [env: EVERKM_DIST_DIR=] [default: ./dist/]
+  -h, --help                 Print help
