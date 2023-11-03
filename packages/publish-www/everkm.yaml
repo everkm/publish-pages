@@ -5,3 +5,5 @@ cfg:
 directory:
   - path: /docs/
     url: /docs/{{slug}}.html
+  - path: /guide/
+    url: /guide/{{slug}}.html

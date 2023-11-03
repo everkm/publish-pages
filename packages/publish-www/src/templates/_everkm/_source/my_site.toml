@@ -6,12 +6,12 @@ beian = "鄂ICP备2023015790号"
 
 [[bottom_nav]]
 title = "道盒"
-url = "https://www.daobox.cn"
+url = "https://www.everkm.cn"
 
 [[bottom_nav]]
 title = "道盒发布"
-url = "https://publish.daobox.cn"
+url = "https://publish.everkm.cn"
 
 [[bottom_nav]]
 title = "道盒笔记"
-url = "https://note.daobox.cn"
+url = "https://note.everkm.cn"

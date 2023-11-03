@@ -34,4 +34,4 @@ description: 基于Markdown内容的渲染工具，输出页面结构不限、�
 ## 使用文档
 
 - [模板语法](~/docs/)
-- [道盒Mardown扩展](https://note.daobox.cn/docs/daobox-markdown.html)
+- [[everkm-markdown]]

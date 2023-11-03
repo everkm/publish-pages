@@ -5,6 +5,11 @@ demo: https://yilog.theme.daobox.cc/
 
 context:
   - location:
+      - /guide/everkm-markdown.html
+    qs:
+      __tpl: /details.html
+      no_dir: true
+  - location:
       - /docs/
     qs:
       __tpl: /book2.html
