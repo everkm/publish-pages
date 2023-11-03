@@ -27,8 +27,8 @@ serve:
 
 export-pages: pick-publish
 	@EVERKM_LOG=info \
-		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
 		EVERKM_SITE_ASSETS=//localhost/daobox-assets \
+		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
 		$(PUBLISH_BIN) serve \
 		--dev-dir ./ \
 		--export
