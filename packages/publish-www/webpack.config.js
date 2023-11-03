@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const WebpackAssetsManifest = require('webpack-assets-manifest')
 const {VueLoaderPlugin} = require('vue-loader')
 const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts')
@@ -92,7 +91,6 @@ module.exports = {
           output: {ascii_only: true},
         },
       }),
-      new CssMinimizerPlugin(),
     ],
     // noEmitOnErrors: true,
 
@@ -227,13 +225,17 @@ module.exports = {
     }),
 
     // 复制public文件
-    // ...(isProd && fs.statSync(resolve("./public")).isDirectory()
+    // ...(isProd
     //   ? [
     //       new CopyWebpackPlugin({
     //         patterns: [
     //           {
-    //             from: resolve("./public"),
-    //             to: resolve("./dist"),
+    //             from: resolve("./src/templates"),
+    //             to: resolve("./dist/templates"),
+    //           },
+    //           {
+    //             from: resolve("./daobox-theme.yaml"),
+    //             to: resolve("./dist/"),
     //           },
     //         ],
     //       }),
