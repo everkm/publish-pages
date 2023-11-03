@@ -32,11 +32,7 @@ export-pages: pick-publish
 		--dev-dir ./ \
 		--export
 
-package-tpls:
-	@~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish package-tpls \
-		--dev-dir ./ \
-		--dist-dir ./dist \
-		--with-tpls
+
 
 fe-env-init:
 	pnpm i
@@ -49,17 +45,15 @@ fe-build:
 
 dist: fe-build export-pages copy-daobox-assets 
 
-dist-tpls: fe-build package-tpls
-
-copy-daobox-assets:
-	@if [ ! -d dist/assets ]; then mkdir -p dist/assets; fi
-	@if [ -d public/daobox-assets ]; then cp -r public/daobox-assets dist/assets/; fi
-
 
 web:
 	@./node_modules/.bin/everkm-publish web \
 		--work-dir dist
 
-daobox-assets-server:
-	@./node_modules/.bin/everkm-publish web \
-		--work-dir public --listen 0.0.0.0:9082
+dist-theme: fe-build package-theme
+	@if [ ! -d theme/dev ]; then mkdir -p theme/dev; fi
+	@cp -r dist/* theme/dev/
+
+copy-daobox-assets:
+	@if [ ! -d dist/assets ]; then mkdir -p dist/assets; fi
+	@if [ -d public/daobox-assets ]; then cp -r public/daobox-assets dist/assets/ ; fi
