@@ -15,8 +15,8 @@ dependencies:
     specifier: ^3.32.1
     version: 3.33.2
   ekm-publish:
-    specifier: ^0.10.0
-    version: 0.10.0
+    specifier: ^0.10.1
+    version: 0.10.1
   katex:
     specifier: ^0.16.8
     version: 0.16.9
@@ -2785,8 +2785,8 @@ packages:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
     dev: true
 
-  /ekm-publish@0.10.0:
-    resolution: {integrity: sha512-9FdvZ6mdYVQ8DiX3oj74EGFU0YxKmIbaH9rQ7rs3Vbw2cBFR5RkwcYBzhYjHUhFuuFQP51MrrN9i594us3Hv7g==}
+  /ekm-publish@0.10.1:
+    resolution: {integrity: sha512-CI7jd7lugRioBQ47rk7Xu9PI+bHyeuxozD9shRujGkrlpruw5/zQit9dlNnexZIBUHWy2FnTtPfQQq2jDK0E7w==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
