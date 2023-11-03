@@ -13,6 +13,9 @@
 # channel docs
 文档
 
+# channel guide
+使用指南
+
 # channel changelog
 更新日志
 
