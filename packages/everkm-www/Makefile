@@ -5,6 +5,18 @@ tag:
 		git push -f github $(TAG); \
 	fi
 
+define publish_bin
+	if [ "$(DEBUG)" == "1" ]; then
+		echo "/Users/dayu/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish"; 
+	else 
+		echo "./node_modules/.bin/everkm-publish"; 
+	fi
+endef
+
+pick-publish:
+	$(eval PUBLISH_BIN:="$(shell $(call publish_bin))")
+	@echo "use daobox bin: $(PUBLISH_BIN)"
+
 serve:
 	@RUST_BACKTRACE=0 EVERKM_LOG=info \
 		EVERKM_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
@@ -12,9 +24,11 @@ serve:
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
 
-export-pages:
-	@EVERKM_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
-		./node_modules/.bin/everkm-publish serve \
+export-pages: pick-publish
+	@EVERKM_LOG=info \
+		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
+		EVERKM_SITE_ASSETS=//localhost/daobox-assets \
+		$(PUBLISH_BIN) serve \
 		--dev-dir ./ \
 		--export
 
