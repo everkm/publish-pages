@@ -14,9 +14,9 @@ dependencies:
   core-js:
     specifier: ^3.32.1
     version: 3.33.2
-  ekm-publish:
-    specifier: ^0.10.1
-    version: 0.10.1
+  everkm-publish:
+    specifier: ^0.10.3
+    version: 0.10.3
   katex:
     specifier: ^0.16.8
     version: 0.16.9
@@ -2785,20 +2785,6 @@ packages:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
     dev: true
 
-  /ekm-publish@0.10.1:
-    resolution: {integrity: sha512-CI7jd7lugRioBQ47rk7Xu9PI+bHyeuxozD9shRujGkrlpruw5/zQit9dlNnexZIBUHWy2FnTtPfQQq2jDK0E7w==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      adm-zip: 0.5.10
-      nodejs-file-downloader: 4.12.1
-      tar: 6.2.0
-    transitivePeerDependencies:
-      - debug
-      - supports-color
-    dev: false
-
   /electron-to-chromium@1.4.574:
     resolution: {integrity: sha512-bg1m8L0n02xRzx4LsTTMbBPiUd9yIR+74iPtS/Ao65CuXvhVZHP0ym1kSdDG3yHFDXqHQQBKujlN1AQ8qZnyFg==}
     dev: true
@@ -2984,6 +2970,20 @@ packages:
     resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
     engines: {node: '>=0.8.x'}
     dev: true
+
+  /everkm-publish@0.10.3:
+    resolution: {integrity: sha512-ZTwLSOE4AL/mL7fBafuxw7x7JQjrK4B/9le6NEPXJ3jky5i5L6TkBAjOG30zRKXMsAeJtHREIzJDL1JKmoINZw==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      adm-zip: 0.5.10
+      nodejs-file-downloader: 4.12.1
+      tar: 6.2.0
+    transitivePeerDependencies:
+      - debug
+      - supports-color
+    dev: false
 
   /execa@5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
