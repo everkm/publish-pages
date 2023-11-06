@@ -1,8 +1,11 @@
-打包模板
+主题管理
 
-Usage: everkm-publish package-theme [OPTIONS]
+Usage: everkm-publish theme <COMMAND>
+
+Commands:
+  pack  打包模板
+  add   安装主题
+  help  Print this message or the help of the given subcommand(s)
 
 Options:
-      --dev-dir <DEV_DIR>    模板开发目录 [env: EVERKM_DEV_DIR=] [default: ./src/]
-      --dist-dir <DIST_DIR>  发布目录 [env: EVERKM_DIST_DIR=] [default: ./dist/]
-  -h, --help                 Print help
+  -h, --help  Print help

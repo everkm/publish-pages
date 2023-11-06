@@ -76,4 +76,4 @@ copy-daobox-assets:
 
 cmd-help-export:
 	@~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish help serve > content/post/guide/_ekm_publish-serve.txt      
-	@~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish help package-theme > content/post/guide/_ekm_publish-package-theme.txt      
+	@~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish help theme > content/post/guide/_ekm_publish-package-theme.txt      
