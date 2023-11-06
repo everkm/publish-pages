@@ -62,7 +62,7 @@ web:
 package-theme:
 	@RUST_BACKTRACE=0 \
 		EVERKM_LOG=info \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish package-theme \
+		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish theme pack \
 		--dev-dir ./ 
 
 dist-theme: fe-build package-theme
