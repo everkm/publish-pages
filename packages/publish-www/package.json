@@ -13,7 +13,7 @@
     "cash-dom": "^8.1.5",
     "core-js": "^3.32.1",
     "everkm-publish": "^0.10.3",
-    "everkm-wa": "^0.0.2",
+    "everkm-wa": "^0.0.3",
     "katex": "^0.16.8",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",

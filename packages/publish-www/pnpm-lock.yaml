@@ -18,8 +18,8 @@ dependencies:
     specifier: ^0.10.3
     version: 0.10.3
   everkm-wa:
-    specifier: ^0.0.2
-    version: 0.0.2(vue@3.3.7)
+    specifier: ^0.0.3
+    version: 0.0.3(vue@3.3.7)
   katex:
     specifier: ^0.16.8
     version: 0.16.9
@@ -4335,11 +4335,11 @@ packages:
       - supports-color
     dev: false
 
-  /everkm-wa@0.0.2(vue@3.3.7):
-    resolution: {integrity: sha512-3UhhgzkK5pONg896FjJnxaB956agd4C+5Wlgw2iYHA0Qu+buGMJiiLFhqMKPhOgWDUHSMLiQP8k/pv6lJ5bTUw==}
+  /everkm-wa@0.0.3(vue@3.3.7):
+    resolution: {integrity: sha512-+BMQyWfHJP/2PHb4snFRbs4AlQ3XIZVmev4CT0ehjLRJnxyilSNMPQYfnBneRe2Uj+09FTLJb8mLw7LY1XRnXQ==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
-      vue: ^3.3.4
+      vue: ^3.3.8
     dependencies:
       axios: 1.6.0
       cash-dom: 8.1.5
