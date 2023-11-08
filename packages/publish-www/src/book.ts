@@ -34,8 +34,7 @@ setupDrawerToggle('#aside-nav', '#drawer')
 
     lazyImg()
     // installFormulaView()
-
-    // ;((window as any)?.Prism)?.highlightAll()
+    ;(window as any)?.Prism?.highlightAll()
   }
 
   const ajaxPath = (globalThis.window as any).daoboxAjaxPathSeg || ''

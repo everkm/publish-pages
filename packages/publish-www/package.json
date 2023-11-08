@@ -13,14 +13,14 @@
     "cash-dom": "^8.1.5",
     "core-js": "^3.32.1",
     "everkm-publish": "^0.10.3",
-    "everkm-wa": "^0.0.3",
+    "everkm-wa": "^0.0.4",
     "katex": "^0.16.8",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "mitt": "^3.0.1",
     "query-string": "^8.1.0",
     "url-state": "^5.0.1",
-    "vue": "^3.3.4"
+    "vue": "^3.3.8"
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
