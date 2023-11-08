@@ -76,9 +76,6 @@ devDependencies:
   css-loader:
     specifier: ^6.8.1
     version: 6.8.1(webpack@5.88.2)
-  daobox-publish:
-    specifier: ^0.9.2
-    version: 0.9.2
   dotenv:
     specifier: ^16.3.1
     version: 16.3.1
@@ -91,6 +88,9 @@ devDependencies:
   eslint-plugin-prettier:
     specifier: ^5.0.0
     version: 5.0.0(eslint@8.48.0)(prettier@3.0.2)
+  everkm-publish:
+    specifier: ^0.10.3
+    version: 0.10.3
   fork-ts-checker-webpack-plugin:
     specifier: ^8.0.0
     version: 8.0.0(typescript@5.2.2)(webpack@5.88.2)
@@ -2604,20 +2604,6 @@ packages:
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
-  /daobox-publish@0.9.2:
-    resolution: {integrity: sha512-X9NPsRYIHRlY208d1WYkfwtE4ch1g7boHcCb66iAQ3Y2h43fFr4UE/7caJWBn9jISCeTMzRrmRAlOIbkpOE+uA==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      adm-zip: 0.5.10
-      nodejs-file-downloader: 4.12.1
-      tar: 6.2.0
-    transitivePeerDependencies:
-      - debug
-      - supports-color
-    dev: true
-
   /de-indent@1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
     dev: true
@@ -2961,6 +2947,20 @@ packages:
     engines: {node: '>=0.8.x'}
     dev: true
 
+  /everkm-publish@0.10.3:
+    resolution: {integrity: sha512-ZTwLSOE4AL/mL7fBafuxw7x7JQjrK4B/9le6NEPXJ3jky5i5L6TkBAjOG30zRKXMsAeJtHREIzJDL1JKmoINZw==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      adm-zip: 0.5.10
+      nodejs-file-downloader: 4.12.1
+      tar: 6.2.0
+    transitivePeerDependencies:
+      - debug
+      - supports-color
+    dev: true
+
   /execa@5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
     engines: {node: '>=10'}
@@ -3101,17 +3101,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dev: false
-
-  /follow-redirects@1.15.3:
-    resolution: {integrity: sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dev: true
 
   /fork-ts-checker-webpack-plugin@8.0.0(typescript@5.2.2)(webpack@5.88.2):
     resolution: {integrity: sha512-mX3qW3idpueT2klaQXBzrIM/pHw+T0B/V9KHEvNrqijTq9NFnMZU6oreVxDYcf33P8a5cW+67PjodNHthGnNVg==}
@@ -3863,7 +3852,7 @@ packages:
   /nodejs-file-downloader@4.12.1:
     resolution: {integrity: sha512-LpfCTNhh805AlLnJnzt1PuEj+RmbrccbAQZ6hBRw2e6QPVR0Qntuo6qqyvPHG5s77/0w0IEKgRAD4nbSnr/X4w==}
     dependencies:
-      follow-redirects: 1.15.3
+      follow-redirects: 1.15.2
       https-proxy-agent: 5.0.1
       mime-types: 2.1.35
       sanitize-filename: 1.6.3
