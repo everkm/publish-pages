@@ -3,14 +3,23 @@ import './nav_tree.scss'
 import './assets/github-markdown.css'
 import $ from 'cash-dom'
 
-const win = globalThis.window as any
-win.daobox.site.setupLayoutHeight()
-win.daobox.site.lazyImg()
-win.daobox.site.initFormulaView()
-win.daobox.site.setupDrawerToggle('#aside-nav', '#drawer')
+import 'everkm-wa/main.css'
+import {
+  setupLayoutHeight,
+  lazyImg,
+  setupDrawerToggle,
+  buildNavTree,
+  setupToc,
+  setupLinkAjax,
+} from 'everkm-wa'
+
+setupLayoutHeight()
+lazyImg()
+// installFormulaView()
+setupDrawerToggle('#aside-nav', '#drawer')
 ;(async () => {
-  const updateNavActive = await win.daobox.site.buildNavTree('.nav-tree', -1)
-  const updateToc = await win.daobox.site.setupToc('.js-toc-content', '#js-toc')
+  const updateNavActive = await buildNavTree('.nav-tree', -1)
+  const updateToc = await setupToc('.js-toc-content', '#js-toc')
 
   const onAjaxLoaded = (doc: Document) => {
     const titleElement = doc.querySelector('title')
@@ -22,14 +31,14 @@ win.daobox.site.setupDrawerToggle('#aside-nav', '#drawer')
     updateToc()
     updateNavActive()
 
-    win.daobox.site.lazyImg()
-    win.daobox.site.initFormulaView()
+    lazyImg()
+    // installFormulaView()
 
-    ;(win.Prism as any)?.highlightAll()
+    // ;((window as any)?.Prism)?.highlightAll()
   }
 
   const ajaxPath = (globalThis.window as any).daoboxAjaxPathSeg || ''
-  if (ajaxPath){
-    win.daobox.site.setupLinkAjax(ajaxPath, onAjaxLoaded)
+  if (ajaxPath) {
+    setupLinkAjax(ajaxPath, onAjaxLoaded)
   }
 })()

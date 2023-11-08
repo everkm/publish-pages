@@ -1,9 +1,11 @@
 import './style.scss'
 import './assets/github-markdown.css'
 
+import 'everkm-wa/main.css'
+import {setupLayoutHeight, lazyImg, setupDrawerToggle} from 'everkm-wa'
 
-const win = globalThis.window as any
-win.daobox.site.setupLayoutHeight()
-win.daobox.site.lazyImg()
-win.daobox.site.initFormulaView()
-win.daobox.site.setupDrawerToggle('#main-body', '#drawer')
+setupLayoutHeight()
+lazyImg()
+// installFormulaView()
+setupDrawerToggle('#aside-nav', '#drawer')
+// listenHistoryBack()

@@ -153,7 +153,7 @@ module.exports = {
       },
       {
         test: /\.(postc|sa|sc|c)ss$/i,
-        include: [resolve('./src'), /node_modules/, /\/ui\/src\//],
+        include: [resolve('./src'), /node_modules/, /everkm/, /\/ui\/src\//],
         use: [
           {
             loader: MiniCssExtractPlugin.loader,

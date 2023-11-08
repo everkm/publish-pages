@@ -25,7 +25,6 @@
     <meta http-equiv="Windows-Target" contect="_top" />
     {{app.prejs | default(value="") | safe}}
     {{assets(type="css", section="book")}}
-    <link rel="stylesheet" href="{{get_env(name="EVERKM_SITE_ASSETS")|safe}}/assets/daobox.css">
     <style></style>
 </head>
 
@@ -89,7 +88,6 @@
     <script>
         var daoboxAjaxPathSeg = "{{__qs.ajax | safe}}"
     </script>
-    <script src="{{get_env(name="EVERKM_SITE_ASSETS")|safe}}/assets/daobox.js"></script>
     {{assets(type="js", section="book")}}
     {% include "_everkm/prism.html" %}
 </body>

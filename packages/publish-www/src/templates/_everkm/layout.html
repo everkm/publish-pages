@@ -22,7 +22,6 @@
     {% block css %}
     {{ assets(section="main", type="css") }}
     {% endblock css %}
-    <link rel="stylesheet" href="{{get_env(name="EVERKM_SITE_ASSETS")|safe}}/assets/daobox.css">
 </head>
 
 <body>
@@ -41,7 +40,6 @@
     </div>
 
 
-    <script src="{{get_env(name="EVERKM_SITE_ASSETS")|safe}}/assets/daobox.js"></script>
     {% block js %}
     {{ assets(section="main", type="js") }}
     {% endblock js %}
