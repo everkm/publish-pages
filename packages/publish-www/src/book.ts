@@ -3,6 +3,7 @@ import './nav_tree.scss'
 import './assets/github-markdown.css'
 import $ from 'cash-dom'
 
+import Vue from 'vue'
 import 'everkm-wa/main.css'
 import {
   setupLayoutHeight,
