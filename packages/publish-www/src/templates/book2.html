@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% set doc = post_detail(path=__qs | get(key="path", default="/docs/")) %}
+{% set doc = post_detail(path=__qs | get(key="path", default="")) %}
 
 <head>
     <meta charset="UTF-8" />

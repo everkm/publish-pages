@@ -3,6 +3,12 @@ author: dayu<dayu@dayu.me>
 repository: https://github.com/daobox-theme/yilog
 demo: https://yilog.theme.daobox.cc/
 
+directory:
+  - path: /docs/
+    url: /docs/{{slug}}.html
+  - path: /guide/
+    url: /guide/{{slug}}.html
+
 context:
   - location:
       - /guide/
