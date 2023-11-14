@@ -3,23 +3,71 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
-  li {
-    list-style: initial;
+  ul {
+    list-style: disc;
+    ul {
+      list-style: circle;
+      ul {
+        list-style: square;
+        ul {
+          list-style: disc;
+        }
+      }
+    }
+  }
+
+  ol {
+    list-style: decial;
+
+    ol {
+      ol {
+        ol {
+          list-style: decial !important;
+        }
+      }
+    }
+
+    /* list-style: none !important;
+    @apply pl-0;
+
+    li:before {
+      
+      font-family: Times New Roman;
+    }
+    li {
+      counter-increment: a 1;
+      margin-left: -1em !important;
+    }
+    li:before {
+      content: counter(a) '. ';
+    }
+    li li {
+      counter-increment: b 1;
+    }
+    li li:before {
+      content: counter(a) '.' counter(b) '. ';
+    }
+    li li li {
+      counter-increment: c 1;
+    }
+    li li li:before {
+      content: counter(a) '.' counter(b) '.' counter(c) '. ';
+    } */
   }
 }
 
-
 html {
-  @apply text-[14px] ;
+  @apply text-[14px];
 }
-
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   html {
     font-size: 16px;
   }
 }
+
 
 body{
   overscroll-behavior: none;
