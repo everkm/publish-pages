@@ -6,16 +6,18 @@
 {% block body %}
 <div class="block-container space-y-6">
     <h1 class="text-4xl font-extrabold mt-6"><a href="{{base_url()}}/">{{__cfg.site.name}}</a></h1>
+    <p class="text-[95%] text-black/60">{{__cfg.site.summary}}</p>
 
+    {% set page_size = __cfg | get(key="page_size", default=5) %}
     {% set page_no =__qs.page | default(value=1) | int %}
-    {% set start = (page_no - 1) * 5 %}
-    {% set end = start + 5 %}
-    {% set items = posts(dir="/列表", recursive=true) %}
+    {% set start = (page_no - 1) * page_size %}
+    {% set end = start + page_size %}
+    {% set items = posts(dir="/", recursive=true) %}
     {% set page_count = script(content="Math.ceil(args.val)", val = items | length / 5 ) %}
 
     {% if page_no < 2 and post_exist(path="/_page/home.md") %}
         {% set doc = post_detail(path="/_page/home.md") %}
-        <div class="yb-content2">
+        <div class="markdown-body">
         {{doc.content_html | safe}}
         </div>
     {% endif %}
@@ -28,11 +30,13 @@
             </a>
             {%if doc.weight > 0%}<span class="!text-red-500 mark-top"></span>{%endif%}
         </h2>
-        <div class="text-[#2f353e] font-light text-[90%] number">{{doc.date | date(format="%Y-%m-%d %H:%M")}}</div>
+        <div class="text-[#2f353e] font-light text-[90%] number">
+            {{doc.update_time | date(format="%Y-%m-%d %H:%M")}}
+            {% if doc.date != doc.update_time %}<em>更新</em>{% endif %}
+        </div>
     </div>
     {% endfor %}
 
-    {% if page_count > 1 %}
     <div class="space-x-6 flex !mt-10">
         {% if page_no > 1 %}
         <div class="flex items-center space-x-1">
@@ -46,7 +50,9 @@
         </div>
         {% endif %}
 
+        {% if page_count > 1 %}
         <div class="">{{page_no}} / {{page_count}}</div>
+        {% endif %}
             
         {% if items | length > end %}
         <div class="flex items-center space-x-1">
@@ -55,7 +61,6 @@
         </div>
         {% endif %}
     </div>
-    {% endif %}
 
 </div>
 {% endblock body %}

@@ -1,0 +1,26 @@
+{% extends "_everkm/layout.html" %}
+
+{% block page_title -%}
+{% set doc = post_meta(id=__qs | get(key="id", default=""), path=__qs | get(key="path", default="")) %}
+{{- doc.title}} | {% endblock %}
+
+{% block body %}
+{% set doc = post_detail(id=__qs | get(key="id", default=""), path=__qs | get(key="path", default="")) %}
+<div class="block-container space-y-8">
+  <h1 class="text-xl font-bold mt-6 my-font-color">
+    <a href="/">{{__cfg.site.name}}</a>
+  </h1>
+  
+  <div class="space-y-3">
+    <h2 class="text-4xl font-semibold">{{doc.title}}</h2>
+    <div class="text-gray-500 space-x-2 text-sm">
+      <span>{{doc.update_time | date(format="%Y-%m-%d %H:%M")}}</span>
+      {%- if doc.date != doc.update_time -%}
+      <span>更新，创建于 {{doc.date | date(format="%Y-%m-%d %H:%M")}}</span>
+      {% endif %}
+    </div>
+  </div>
+  <div class="markdown-body">{{doc.content_html | safe}}</div>
+  
+</div>
+{% endblock body %}

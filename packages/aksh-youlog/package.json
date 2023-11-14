@@ -1,13 +1,11 @@
 {
-  "name": "yiblog",
+  "name": "yilog",
   "private": false,
   "version": "0.1.1",
   "scripts": {
     "dev": "ENV_FILE=.env.dev webpack --watch",
     "build": "ENV_FILE=.env.prod webpack",
     "profile": "ENV_FILE=.env.prod PROFILE=1 webpack",
-    "preview": "daobox-site serve --dev-dir ./ --dist-dir ./dist ",
-    "preview_l": "~/Coder/yiibox/daobox-server-next/wz-server/target/debug/daobox-site serve --dev-dir ./ --dist-dir ./dist ",
     "hi": "echo Hello Daobox"
   },
   "dependencies": {
@@ -36,11 +34,11 @@
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
-    "daobox-publish": "^0.9.1",
     "dotenv": "^16.3.1",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.48.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "everkm-publish": "^0.10.5",
     "fork-ts-checker-webpack-plugin": "^8.0.0",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.28",

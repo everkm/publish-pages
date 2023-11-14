@@ -1,0 +1,38 @@
+name: yilog
+author: dayu<dayu@dayu.me>
+repository: https://github.com/everkm/theme-yilog
+demo: https://yilog.theme.daobox.cc/
+
+
+cfg:
+  site:
+    name: 道盒经典博客展示
+    contact: hello@example.com
+    summary: 此博客模板适用于道盒发布，可以在此基础上自由更改，分发。
+    keywords: everkm, publish, everkm-theme, yilog, 道盒
+    description: 经典BLOG模板。
+    # beian: 中ICP备20230828
+  page_size: 12
+
+
+directory:
+  - path: /_wiki/
+    url: /wiki/{{slug}}.html
+  - path: /
+    url: /posts/2023/{{slug}}.html
+
+
+context:
+  - location:
+      - /posts/
+    qs:
+      __tpl: /detail.html
+  - location:
+      - /wiki/index.html
+    qs:
+      home: 1
+      path: /_wiki/index.md
+  - location:
+      - /wiki/
+    qs:
+      __tpl: /wiki.html

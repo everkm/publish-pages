@@ -1,47 +1,40 @@
+ifneq (, $(shell echo $$DEBUG))
+  EKMP = $(shell which everkm-publish)
+else
+  EKMP = ./node_modules/.bin/everkm-publish
+endif
+
+
 .PHONY: tag
 tag:
 	@if [ "$(TAG)" != "" ]; then \
 		git tag -f $(TAG); \
-		git push -f github $(TAG); \
+		git push -f origin $(TAG); \
 	fi
 
-
-
-serve:
-	@RUST_BACKTRACE=0 EVERKM_LOG=info,daobox_publish=debug,tpls=debug \
-		EVERKM_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
-		EVERKM_SITE_ASSETS=http://192.168.31.239:9070 \
-		EVERKM_SITE_ASSETS=//localhost/daobox-assets \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish serve \
+	
+dev:
+	@echo use ekmp $(EKMP)
+	@EVERKM_LOG=info \
+		$(EKMP) serve \
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
+
 work:
-	@RUST_BACKTRACE=0 EVERKM_LOG=info \
-		EVERKM_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
-		EVERKM_SITE_ASSETS=//localhost/daobox-assets \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish serve \
+	@EVERKM_LOG=info \
+		$(EKMP) serve \
 		--work-dir ./ \
+		--theme yilog \
 		--listen=0.0.0.0:9081
 
-export-all:
-	@EVERKM_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
-		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
-		./node_modules/.bin/everkm-publish serve \
+build-pages:
+	@EVERKM_LOG=info \
+		$(EKMP) serve \
 		--dev-dir ./ \
 		--export
 
-export-all-debug:
-	@EVERKM_SITE_ASSETS=/assets/daobox-assets/0.0.1 \
-		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish serve \
-		--dev-dir ./ \
-		--export
-
-package-theme:
-	@RUST_BACKTRACE=1 \
-		EVERKM_LOG=info,img_assets=info \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish package-theme \
-		--dev-dir ./ 
+fe-env-init:
+	pnpm i
 
 fe-dev:
 	pnpm run dev
@@ -49,24 +42,32 @@ fe-dev:
 fe-build:
 	pnpm run build
 
-dist: fe-build export-all copy-daobox-assets 
+dist: fe-build build-pages
 
-dist-debug: fe-build export-all-debug copy-daobox-assets 
+sync-config:
+	@cp everkm-theme.yaml content/post/_everkm-theme.inc.yaml
+
+
+preview:
+	@$(EKMP) web \
+		--work-dir dist
+
+
+package-theme:
+	@echo $(EKMP)
+	@EVERKM_LOG=info \
+		$(EKMP) theme pack \
+		--dev-dir ./ 
+
 
 dist-theme: fe-build package-theme
 	@if [ ! -d theme/dev ]; then mkdir -p theme/dev; fi
+	@if [ -d theme/dev ]; then rm -rf theme/dev/* ; fi
 	@cp -r dist/* theme/dev/
 
-copy-daobox-assets:
-	@if [ ! -d dist/assets ]; then mkdir -p dist/assets; fi
-	@if [ -d public/daobox-assets ]; then @cp -r public/daobox-assets dist/assets/; fi
-	
 
-
-web:
-	@./node_modules/.bin/everkm-publish web \
-		--work-dir dist
-
-assets-web:
-	@./node_modules/.bin/everkm-publish web \
-		--work-dir ~/Coder/www.daobox.cn/packages/daobox-assets/dist --listen 0.0.0.0:9070
+bundle-theme: dist-theme
+	@cd theme && \
+		if [ -d yilog ]; then rm -rf yilog ; fi && \
+		mv dev yilog && \
+		zip -r yilog.zip ./yilog
