@@ -4,7 +4,7 @@ const predefined_list = (process.env["TW_CONTENT_LIST"] || "")
 
 let content_list = [
   "./public/index.html",
-  "./src/**/*.{vue,js,ts,jsx,tsx,html,md}",
+  "./src/**/*.{vue,js,ts,jsx,tsx,html}",
 ];
 
 if (predefined_list.length) {

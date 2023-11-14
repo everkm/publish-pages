@@ -24,3 +24,6 @@ ts-built
 *.sw?
 dist
 /dist-pages
+theme/dev
+theme/*.zip
+theme/yilog

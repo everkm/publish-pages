@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>{{__cfg.site.name}}</title>
+    <title>{% block page_title %}{% endblock page_title %}{{__cfg.site.name}}</title>
     <meta name="description" content="{{__cfg.site.description | default(value="")}}" />
     <meta name="keywords" content="{{__cfg.site.keywords | default(value="")}}" />
     {% block meta %}
@@ -27,17 +27,17 @@
         {% block body %}{% endblock body %}
 
         {% block footer %}
-        <div class="text-sm block-container mt-12 text-gray-500 space-x-1.5 divide-x divide-black/30">
+        <div class="text-sm block-container mt-12 text-gray-500 text-center space-x-1.5">
             <span>©{{now() | date(format="%Y")}}</span>
-            <span class="pl-1.5">毓知信息</span>
-            <span class="pl-1.5">联系邮箱: &#121;&#111;&#117;&#108;&#111;&#103;&#64;&#101;&#118;&#101;&#114;&#107;&#109;&#46;&#99;&#110;</span>
+            <span>by<a href="https://publish.everkm.cn" target="_blank">道盒发布</a></span>
             {% if __cfg.site.beian %}
-            <span class="pl-1.5"><a href="https://beian.miit.gov.cn" target="_blank">{{__cfg.site.beian}}</a></span>
+            <span><a href="https://beian.miit.gov.cn" target="_blank">{{__cfg.site.beian}}</a></span>
             {% endif %}
         </div>
         {% endblock footer %}
     </div>
     {% block js %}{{ assets(section="main", type="js") }}{% endblock js %}
+    {% include "_everkm/prism.html" %}
 </body>
 
 </html>

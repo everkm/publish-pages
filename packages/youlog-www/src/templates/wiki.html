@@ -1,0 +1,23 @@
+{% extends "_everkm/layout.html" %}
+{% import "_everkm/blocks.html" as blocks %}
+{% import "_everkm/blocks/nav.html" as nav_blocks %}
+
+
+{% block body %}
+<div class="block-container space-y-6">
+    <h1 class="text-4xl font-extrabold mt-6"><a href="{{base_url()}}/">{{__cfg.site.name}}</a></h1>
+
+    {% set is_home = __qs | get(key="home", default="0") %}
+    {% if is_home == "1" %}
+    <p class="text-[95%] text-black/60">{{__cfg.site.summary}}</p>
+    {% endif %}
+
+
+    {% set content_path=__qs | get(key="path", default="/_page/home.md") %}
+    {% set doc = post_detail(path=content_path) %}
+    <div class="markdown-body">
+    {{doc.content_html | safe}}
+    </div>
+
+</div>
+{% endblock body %}

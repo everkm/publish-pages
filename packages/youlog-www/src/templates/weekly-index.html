@@ -6,12 +6,10 @@
 {% block body %}
 <div class="block-container space-y-6">
     <h1 class="text-4xl font-extrabold mt-6"><a href="{{base_url()}}/">{{__cfg.site.name}}</a></h1>
-    <p class="text-[95%] text-black/60">{{__cfg.site.summary}}</p>
 
-    {% set page_size = __cfg | get(key="page_size", default=5) %}
     {% set page_no =__qs.page | default(value=1) | int %}
-    {% set start = (page_no - 1) * page_size %}
-    {% set end = start + page_size %}
+    {% set start = (page_no - 1) * 5 %}
+    {% set end = start + 5 %}
     {% set items = posts(dir="/", recursive=true) %}
     {% set page_count = script(content="Math.ceil(args.val)", val = items | length / 5 ) %}
 
@@ -22,21 +20,25 @@
         </div>
     {% endif %}
 
+
+    {% set dt = "" %}
     {% for doc in items | slice(start=start, end=end) %}
-    <div class="space-y-2">
-        <h2 class="text-2xl">
-            <a class="text-[#005b99] font-medium" href="{{doc.url_path | safe}}?path={{doc.path | urlencode_strict}}&__tpl={{"detail.html"|urlencode_strict}}" target="_blank">
-            {{doc.title}}
-            </a>
-            {%if doc.weight > 0%}<span class="!text-red-500 mark-top"></span>{%endif%}
-        </h2>
-        <div class="text-[#2f353e] font-light text-[90%] number">
-            {{doc.update_time | date(format="%Y-%m-%d %H:%M")}}
-            {% if doc.date != doc.update_time %}<em>更新</em>{% endif %}
+        {% set cur_dt = doc.date | date(format="%Y-%m-%d") %}
+        {% if dt != cur_dt %}
+            {% set_global dt = cur_dt %}
+            <div class="text-[#2f353e] font-semibold text-[95%] number border-l-[0.4em] pl-[0.5em] border-blue-600">{{dt}}</div>
+        {% endif %}
+    
+        <div class="space-y-2">
+            <h2 class="text-2xl pl-[0.5em]">
+                <a class="text-[#005b99] font-medium" href="{{doc.url_path | safe}}?path={{doc.path|urlencode_strict}}&__tpl={{"detail.html"|urlencode_strict}}" target="_blank">
+                {{doc.title}}
+                </a>
+            </h2>
         </div>
-    </div>
     {% endfor %}
 
+    {% if page_count > 1 %}
     <div class="space-x-6 flex !mt-10">
         {% if page_no > 1 %}
         <div class="flex items-center space-x-1">
@@ -50,9 +52,7 @@
         </div>
         {% endif %}
 
-        {% if page_count > 1 %}
         <div class="">{{page_no}} / {{page_count}}</div>
-        {% endif %}
             
         {% if items | length > end %}
         <div class="flex items-center space-x-1">
@@ -61,6 +61,7 @@
         </div>
         {% endif %}
     </div>
+    {% endif %}
 
 </div>
 {% endblock body %}

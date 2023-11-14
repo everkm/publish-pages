@@ -1,4 +1,5 @@
 import "@/assets/css/tailwind.scss";
-import "@/assets/css/yb_content2.scss";
+// import "@/assets/css/yb_content2.scss";
+import "../css/github-markdown.css";
 
-console.log('hello dayu.me')
+void(0)

@@ -9,3 +9,9 @@ cfg:
 directory:
   - path: /好文/
     url: /haowen/{{year}}/{{slug}}.html
+
+context:
+  - location:
+      - /index.
+    qs:
+      __tpl: /weekly-index.html
