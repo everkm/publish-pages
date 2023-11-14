@@ -9,7 +9,7 @@ endif
 tag:
 	@if [ "$(TAG)" != "" ]; then \
 		git tag -f $(TAG); \
-		git push -f origin $(TAG); \
+		git push -f github $(TAG); \
 	fi
 
 	
@@ -23,14 +23,13 @@ dev:
 work:
 	@EVERKM_LOG=info \
 		$(EKMP) serve \
-		--work-dir ./ \
 		--theme yilog \
 		--listen=0.0.0.0:9081
 
 build-pages:
 	@EVERKM_LOG=info \
 		$(EKMP) serve \
-		--dev-dir ./ \
+		--theme yilog \
 		--export
 
 fe-env-init:
@@ -42,7 +41,7 @@ fe-dev:
 fe-build:
 	pnpm run build
 
-dist: fe-build build-pages
+dist: build-pages
 
 sync-config:
 	@cp everkm-theme.yaml content/post/_everkm-theme.inc.yaml
