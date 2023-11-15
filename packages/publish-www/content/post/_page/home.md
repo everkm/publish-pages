@@ -6,6 +6,10 @@ keywords: 道盒, 静态博客，本地知识库
 description: 基于Markdown内容的渲染工具，输出页面结构不限、布局不限，适用于官网、产品展示、博客(Blog)、内容管理(CMS)、Wiki、知识库等应用制作。
 ---
 
+```yaml dcard/bilibili2
+vid: BV14N4y1U7wr
+```
+
 基于Markdown内容的渲染工具，输出页面结构不限、布局不限，适用于官网、产品展示、博客(Blog)、内容管理(CMS)、Wiki、知识库等应用制作。
 
 ## 特色功能： 

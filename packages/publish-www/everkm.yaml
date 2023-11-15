@@ -1,6 +1,5 @@
 cfg:
   everkm_site_assets: https://assets.daobox.cc/daobox-assets/0.0.1
-  # everkm_site_assets: http://localhost:9082/daobox-assets/0.0.1
 
 directory:
   - path: /docs/

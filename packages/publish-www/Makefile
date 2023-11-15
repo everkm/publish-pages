@@ -18,26 +18,20 @@ pick-publish:
 	@echo "use daobox bin: $(PUBLISH_BIN)"
 
 	
-serve:
-	@RUST_BACKTRACE=0 EVERKM_LOG=info \
-		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
-		EVERKM_SITE_ASSETS=//localhost/daobox-assets \
+dev:
+	@RUST_BACKTRACE=0 EVERKM_LOG=debug \
 		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish serve \
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
 
 work:
 	@RUST_BACKTRACE=0 EVERKM_LOG=info \
-		EVERKM_SITE_ASSETS=http://localhost:9082/daobox-assets/0.0.1 \
-		EVERKM_SITE_ASSETS=//localhost/daobox-assets \
 		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish serve \
 		--work-dir ./ \
 		--listen=0.0.0.0:9081
 
 export-pages: pick-publish
 	@EVERKM_LOG=info \
-		EVERKM_SITE_ASSETS=//localhost/daobox-assets \
-		EVERKM_SITE_ASSETS=//assets.daobox.cc/daobox-assets/0.1.2 \
 		$(PUBLISH_BIN) serve \
 		--dev-dir ./ \
 		--export
@@ -54,7 +48,7 @@ fe-build:
 dist: fe-build export-pages copy-daobox-assets 
 
 
-web:
+preview:
 	@./node_modules/.bin/everkm-publish web \
 		--work-dir dist
 
