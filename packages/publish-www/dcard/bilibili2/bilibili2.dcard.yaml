@@ -1,6 +1,6 @@
-name: bilibili
+name: bilibili2
 assets:
-  entrypoint: 
+  inject: 
     - assets/b.css
     - assets/a.js
   files:
