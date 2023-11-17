@@ -15,8 +15,8 @@ dependencies:
     specifier: ^3.32.1
     version: 3.32.1
   everkm-publish:
-    specifier: ^0.10.5
-    version: 0.10.5
+    specifier: ^0.10.7
+    version: 0.10.7
   katex:
     specifier: ^0.16.8
     version: 0.16.8
@@ -3045,8 +3045,8 @@ packages:
     engines: {node: '>=0.8.x'}
     dev: true
 
-  /everkm-publish@0.10.5:
-    resolution: {integrity: sha512-3AfL3R8kPjRWU5o6Ft5REGOICxMCqIC/GV1zqrgRalc06F/MpQOhWmrKR7LGQagDDpBcEjsP+Zw+E++JJPSUqw==}
+  /everkm-publish@0.10.7:
+    resolution: {integrity: sha512-2us7jUrjIwJiPVhAfPE+I7BvXdnbDqUDiBMvRyOd32HUKMsG8g/Ha2s/5qp/aYFCHbQTy9NJP3q9ot/u+hjRSA==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true

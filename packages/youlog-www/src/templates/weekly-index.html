@@ -7,13 +7,14 @@
 <div class="block-container space-y-6">
     <h1 class="text-4xl font-extrabold mt-6"><a href="{{base_url()}}/">{{__cfg.site.name}}</a></h1>
 
-    {% set page_no =__qs.page | default(value=1) | int %}
-    {% set start = (page_no - 1) * 5 %}
-    {% set end = start + 5 %}
-    {% set items = posts(dir="/", recursive=true) %}
-    {% set page_count = script(content="Math.ceil(args.val)", val = items | length / 5 ) %}
+    {% set dirs = posts_directory_list(prefix="/好文/") | reverse %}
+    {% set page_count = dirs|length %}
+    {% set cur_dir =__qs | get(key="d", default=dirs[0]) %}
+    {% set idx = cur_dir | index_of(search=dirs) %}
+    {% set page_no = idx + 1 %}
+    {% set items = posts(dir=cur_dir, recursive=true) %}
 
-    {% if page_no < 2 and post_exist(path="/_page/home.md") %}
+    {% if cur_dir == dirs[0] and post_exist(path="/_page/home.md") %}
         {% set doc = post_detail(path="/_page/home.md") %}
         <div class="markdown-body">
         {{doc.content_html | safe}}
@@ -22,7 +23,7 @@
 
 
     {% set dt = "" %}
-    {% for doc in items | slice(start=start, end=end) %}
+    {% for doc in items %}
         {% set cur_dt = doc.date | date(format="%Y-%m-%d") %}
         {% if dt != cur_dt %}
             {% set_global dt = cur_dt %}
@@ -44,19 +45,21 @@
         <div class="flex items-center space-x-1">
             {% if page_no == 2 %}
             {{nav_blocks::arrow_left()}}
-            <a href="index.html">上一页</a>
+            <a href="index.html">上一期</a>
             {% elif page_no > 2 %}
             {{nav_blocks::arrow_left()}}
-            <a href="index.p{{page_no-1}}.html?page={{page_no-1}}">上一页</a>
+            {% set prev = idx-1 %}
+            <a href="index.p{{page_no-1}}.html?d={{ dirs[prev] | urlencode_strict }}">上一期</a>
             {% endif %}
         </div>
         {% endif %}
 
         <div class="">{{page_no}} / {{page_count}}</div>
             
-        {% if items | length > end %}
+        {% if page_no < page_count %}
+        {% set next = idx+1 %}
         <div class="flex items-center space-x-1">
-            <a href="index.p{{page_no+1}}.html?page={{page_no+1}}">下一页</a>
+            <a href="index.p{{page_no+1}}.html?d={{ dirs[next] | urlencode_strict }}">下一期</a>
             {{nav_blocks::arrow_right()}}
         </div>
         {% endif %}

@@ -19,8 +19,10 @@ pick-publish:
 
 	
 dev:
+	@which everkm-publish
+	@everkm-public version
 	@RUST_BACKTRACE=0 EVERKM_LOG=debug \
-		~/Coder/yiibox/daobox-server-next/wz-server/target/debug/everkm-publish serve \
+		everkm-publish serve \
 		--dev-dir ./ \
 		--listen=0.0.0.0:9081
 
